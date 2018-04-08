@@ -1,22 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import Greetings from './Greetings';
-import { ContentWrapper } from './Styled';
+import RandomAppearText from './RandomAppearText';
+import Nav from './Nav';
+import { ContentWrapper, SlideBackground, Greetings } from './Styled';
 
 class App extends Component {
+  static propTypes = {
+    styles: PropTypes.object.isRequired
+  }
+
   state = {
 
   }
 
   render() {
+    const { styles } = this.props;
+
     return (
-      <Fragment>
-        <ContentWrapper className='container'>
-          <Greetings text='welcome to my site' />
-        </ContentWrapper>
-      </Fragment>
+      <ContentWrapper
+        dynamicStyles={styles}
+      >
+        <Greetings className='container'>
+          <div className='row'>
+            <RandomAppearText text='Welcome' />
+          </div>
+          <Nav />
+        </Greetings>
+        <SlideBackground dynamicStyles={styles} />
+      </ContentWrapper>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  styles: state.styles
+});
+
+export default connect(mapStateToProps, null)(App);

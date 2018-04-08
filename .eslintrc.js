@@ -15,6 +15,7 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
     'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
     'react/jsx-filename-extension': [ 1, { 'extensions': ['.js', '.jsx'] } ],
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    'react/no-array-index-key': 0
   }
 };
