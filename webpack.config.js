@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     entry: ['babel-polyfill', path.resolve(__dirname, 'client', 'src', 'index.js')],
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist', 'js')
+      path: path.resolve(__dirname, 'public', 'js')
     },
     module: {
       rules: [
@@ -31,7 +31,9 @@ module.exports = (env, argv) => {
     },
     resolve: {
       alias: {
-        src: path.resolve(__dirname, 'src')
+        src: path.resolve(__dirname, 'client', 'src'),
+        util: path.resolve(__dirname, 'client', 'util'),
+        public: path.resolve(__dirname, 'public')
       }
     }
   };

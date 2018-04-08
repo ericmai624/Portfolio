@@ -13,4 +13,6 @@ app.use(middleware.bodyParser.urlencoded({ extended: true }));
 app.use(middleware.morgan('common'));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
+app.get('/', (req, res) => res.render('index.pug'));
+
 app.listen(port, console.log.bind(console, `Ready to accept connections on port ${port}`));
