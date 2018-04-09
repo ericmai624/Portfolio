@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Nav from './Nav';
-import RandomAppearText from './RandomAppearText';
+import Greeting from './Greeting';
 import Resume from './Resume';
 import { ContentWrapper, Content, Msg } from './Styled';
 
@@ -24,9 +24,9 @@ class App extends Component {
     return (
       <Fragment>
         <ContentWrapper dynamicStyles={styles}>
-          <Content className='container'>
+          <Content>
             <Msg id='greeting'>
-              <RandomAppearText text={'Hi, I\'m Eric.'} />
+              <Greeting text={'Hi, I\'m Eric.'} />
             </Msg>
             <Nav />
           </Content>

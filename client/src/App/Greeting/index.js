@@ -8,7 +8,7 @@ import Letter from './Styled';
 
 import triggerBackgroundChange from 'src/actions/triggerBackgroundChange';
 
-class RandomAppearText extends PureComponent {
+class Greeting extends PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     triggerBackgroundChange: PropTypes.func.isRequired
@@ -17,7 +17,7 @@ class RandomAppearText extends PureComponent {
   componentDidMount() {
     this.words = document.querySelectorAll('#greeting>span[data-type=special]');
     this.indices = range(this.words.length);
-    this.timeout = setTimeout(this.emergeChar, 100);
+    this.timeout = setTimeout(this.fadeInChar, 100);
   }
 
   componentWillUnmount() {
@@ -27,7 +27,7 @@ class RandomAppearText extends PureComponent {
     }
   }
 
-  emergeChar = () => {
+  fadeInChar = () => {
     if (!this.indices.length) {
       return this.props.triggerBackgroundChange();
     }
@@ -42,9 +42,9 @@ class RandomAppearText extends PureComponent {
     this.indices.pop();
 
     if (element.innerText === ' ') {
-      this.timeout = setTimeout(this.emergeChar);
+      this.timeout = setTimeout(this.fadeInChar);
     } else {
-      this.timeout = setTimeout(this.emergeChar, 120);
+      this.timeout = setTimeout(this.fadeInChar, 120);
     }
 
     return this.timeout;
@@ -67,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
   triggerBackgroundChange: bindActionCreators(triggerBackgroundChange, dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(RandomAppearText);
+export default connect(null, mapDispatchToProps)(Greeting);

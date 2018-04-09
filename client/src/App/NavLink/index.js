@@ -10,8 +10,7 @@ class NavLink extends PureComponent {
   }
 
   state = {
-    isHovered: false,
-    isTransforming: false
+    isHovered: false
   }
 
   componentDidMount() {
@@ -23,17 +22,18 @@ class NavLink extends PureComponent {
     this.clearTransform();
   }
 
-  triggerHover = () => {
-    const { isHovered, isTransforming } = this.state;
-    if (isTransforming) {
-      return this.setState({ isHovered: false });
-    }
-    return this.setState({ isHovered: !isHovered });
+  onTransformComplete = () => {
+
   }
 
-  fadeoutChar = () => {
+  handleHover = () => {
+    const { isHovered } = this.state;
+    this.setState({ isHovered: !isHovered });
+  }
+
+  fadeOutChar = () => {
     if (!this.indices.length) {
-      return; // trigger something after all words disappear
+      return this.onTransformComplete();
     }
 
     const leng = this.indices.length - 1;
@@ -46,20 +46,12 @@ class NavLink extends PureComponent {
     this.indices.pop();
 
     if (element.innerText === ' ') {
-      this.timeout = setTimeout(this.fadeoutChar);
+      this.timeout = setTimeout(this.fadeOutChar);
     } else {
-      this.timeout = setTimeout(this.fadeoutChar, 20);
+      this.timeout = setTimeout(this.fadeOutChar, 20);
     }
-  }
 
-  triggerTransform = () => {
-    const { isTransforming } = this.state;
-    if (!isTransforming) {
-      this.setState({
-        isTransforming: true,
-        isHovered: false
-      }, this.fadeoutChar);
-    }
+    return this.timeout;
   }
 
   clearTransform = () => {
@@ -80,9 +72,9 @@ class NavLink extends PureComponent {
     return (
       <Button
         isHovered={isHovered}
-        onClick={this.triggerTransform}
-        onMouseEnter={this.triggerHover}
-        onMouseLeave={this.triggerHover}
+        onClick={this.fadeOutChar}
+        onMouseEnter={this.handleHover}
+        onMouseLeave={this.handleHover}
       >
         {text.split('').map(this.renderWords)}
       </Button>

@@ -16,7 +16,7 @@ class Nav extends Component {
     const { links } = this.state;
 
     return (
-      <NavContainer className='row'>
+      <NavContainer>
         {links.map(link => (
           <NavLink key={link.title} text={link.title} />
         ))}
