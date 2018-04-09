@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import NavLink from 'src/App/NavLink';
 import NavContainer from './Styled';
 
-class Nav extends Component {
-  state = {
-    links: [
-      { title: 'Projects', href: '/projects', status: '' },
-      { title: 'Resume', href: '/resume', status: '' },
-      { title: 'Contact', href: '/contact', status: '' }
-    ]
-  }
+const Nav = ({ isVisible, links }) => (
+  <NavContainer isVisible={isVisible}>
+    {links.map(link => (
+      <NavLink key={link} text={link} />
+    ))}
+  </NavContainer>
+);
 
-  render() {
-    const { links } = this.state;
+Nav.defaultProps = {
+  links: ['Projects', 'Resume', 'Contact']
+};
 
-    return (
-      <NavContainer>
-        {links.map(link => (
-          <NavLink key={link.title} text={link.title} />
-        ))}
-      </NavContainer>
-    );
-  }
-}
+Nav.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  links: PropTypes.arrayOf(PropTypes.string)
+};
 
-export default Nav;
+const mapStateToProps = state => ({
+  isVisible: !state.app.isBlackBg
+});
+
+export default connect(mapStateToProps)(Nav);

@@ -1,17 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Nav from './Nav';
 import Greeting from './Greeting';
-import Resume from './Resume';
-import { ContentWrapper, Content, Msg } from './Styled';
+import MainContent from './MainContent';
+import ContentWrapper from './Styled';
 
-import { stylesType } from 'src/types';
+import { appType } from 'src/types';
 
 class App extends Component {
   static propTypes = {
-    styles: PropTypes.shape(stylesType).isRequired
+    app: PropTypes.shape(appType).isRequired
   }
 
   state = {
@@ -19,26 +18,19 @@ class App extends Component {
   }
 
   render() {
-    const { styles } = this.props;
+    const { app } = this.props;
 
     return (
-      <Fragment>
-        <ContentWrapper dynamicStyles={styles}>
-          <Content>
-            <Msg id='greeting'>
-              <Greeting text={'Hi, I\'m Eric.'} />
-            </Msg>
-            <Nav />
-          </Content>
-        </ContentWrapper>
-        <Resume />
-      </Fragment>
+      <ContentWrapper dynamicStyles={app}>
+        <Greeting display={app.displayGreeting} />
+        <MainContent display={!app.displayGreeting} />
+      </ContentWrapper>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  styles: state.styles
+  app: state.app
 });
 
 export default connect(mapStateToProps, null)(App);

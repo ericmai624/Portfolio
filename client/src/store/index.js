@@ -1,10 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers } from 'redux';
 // import logger from 'redux-logger';
 
-import styles from './styles';
+import app from './app';
 
 const reducer = combineReducers({
-  styles
+  app
 });
 
 const store = createStore(reducer);

@@ -1,8 +1,22 @@
 import styled from 'styled-components';
 
-const Letter = styled.span`
-  font-weight: bold;
-  transition: opacity 0.2s ease-in-out;
+export const Landing = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 25%;
+  transform: translateY(-50%);
+  font-size: 2.3em;
+
+  @media screen and (max-width:992px) {
+    left: 0;
+    width: 100%;
+    align-items: center;
+  }
 `;
 
-export default Letter;
+export const MsgContainer = styled.div`
+  display: inline-block;
+  margin-bottom: 0.5em;  
+`;

@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { random, range } from 'lodash';
 
 import Button from './Styled';
 
+import hideGreeting from 'src/actions/hideGreeting';
+
 class NavLink extends PureComponent {
   static propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    hideGreeting: PropTypes.func.isRequired
   }
 
   state = {
@@ -23,7 +28,7 @@ class NavLink extends PureComponent {
   }
 
   onTransformComplete = () => {
-
+    this.props.hideGreeting();
   }
 
   handleHover = () => {
@@ -82,4 +87,8 @@ class NavLink extends PureComponent {
   }
 }
 
-export default NavLink;
+const mapDispatchToProps = dispatch => ({
+  hideGreeting: bindActionCreators(hideGreeting, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(NavLink);

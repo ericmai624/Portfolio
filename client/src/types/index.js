@@ -1,1 +1,1 @@
-export { default as stylesType } from './styles';
+export { default as app } from './app';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContentWrapper = styled.div`
+const ContentWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
@@ -14,7 +14,7 @@ export const ContentWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    transform: ${({ dynamicStyles }) => (dynamicStyles.isVisible ? 'none' : 'translateX(-100%)')};
+    transform: ${({ dynamicStyles }) => (dynamicStyles.isBlackBg ? 'translateX(-100%)' : 'none')};
     background: #fff;
     width: 100%;
     height: 100vh;
@@ -23,24 +23,4 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const Content = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 50%;
-  left: 25%;
-  transform: translateY(-50%);
-  font-size: 2.3em;
-
-  @media screen and (max-width:992px) {
-    left: 0;
-    width: 100%;
-    align-items: center;
-  }
-`;
-
-export const Msg = styled.div`
-  display: inline-block;
-  margin-bottom: 0.5em;  
-`;
-
+export default ContentWrapper;
