@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import NavLink from 'src/App/NavLink';
-import { NavContainer, Sep } from './Styled';
+import NavContainer from './Styled';
 
 class Nav extends Component {
   state = {
@@ -18,10 +18,7 @@ class Nav extends Component {
     return (
       <NavContainer className='row'>
         {links.map(link => (
-          <Fragment key={link.title}>
-            <NavLink text={link.title} />
-            <Sep />
-          </Fragment>
+          <NavLink key={link.title} text={link.title} />
         ))}
       </NavContainer>
     );

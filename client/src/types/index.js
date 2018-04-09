@@ -1,0 +1,1 @@
+export { default as stylesType } from './styles';

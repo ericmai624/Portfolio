@@ -4,6 +4,7 @@
     "react"
   ],
   "plugins": [
+    "styled-components",
     "transform-object-rest-spread",
     "transform-class-properties",
     "transform-async-to-generator",

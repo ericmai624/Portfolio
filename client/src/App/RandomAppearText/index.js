@@ -15,7 +15,7 @@ class RandomAppearText extends PureComponent {
   }
 
   componentDidMount() {
-    this.words = document.querySelectorAll('span[data-type=special]');
+    this.words = document.querySelectorAll('#greeting>span[data-type=special]');
     this.indices = range(this.words.length);
     this.timeout = setTimeout(this.emergeChar, 100);
   }
@@ -35,11 +35,17 @@ class RandomAppearText extends PureComponent {
     const leng = this.indices.length - 1;
     const i = random(0, leng);
     const picked = this.indices[i];
+    const element = this.words[picked];
 
-    this.words[picked].style.opacity = 1;
+    element.style.opacity = 1;
     this.indices[i] = this.indices[leng];
     this.indices.pop();
-    this.timeout = setTimeout(this.emergeChar, 180);
+
+    if (element.innerText === ' ') {
+      this.timeout = setTimeout(this.emergeChar);
+    } else {
+      this.timeout = setTimeout(this.emergeChar, 120);
+    }
 
     return this.timeout;
   }

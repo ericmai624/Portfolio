@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
           test: /\.(sass|css)?$/,
           use: [
             { loader: 'style-loader' },
-            { loader: 'css-loader' },
+            { loader: 'css-loader', options: { minimize: argv.mode === 'production' } },
             { loader: 'sass-loader' }
           ]
         }

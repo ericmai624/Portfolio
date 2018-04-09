@@ -1,16 +1,16 @@
 import { createReducer } from 'util';
 
 const initState = {
-  bgColor: '#fff',
-  fontColor: '#000',
+  bgColor: '#000',
+  fontColor: '#fff',
   isVisible: false
 };
 
 const handler = {
   BACKGROUND_CHANGE_TRIGGERED: state => ({
     ...state,
-    bgColor: '#000',
-    fontColor: '#fff',
+    bgColor: '#fff',
+    fontColor: '#000',
     isVisible: true
   })
 };

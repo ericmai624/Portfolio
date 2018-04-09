@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import RandomAppearText from './RandomAppearText';
 import Nav from './Nav';
-import { ContentWrapper, SlideBackground, Greetings } from './Styled';
+import RandomAppearText from './RandomAppearText';
+import Resume from './Resume';
+import { ContentWrapper, Content, Msg } from './Styled';
+
+import { stylesType } from 'src/types';
 
 class App extends Component {
   static propTypes = {
-    styles: PropTypes.object.isRequired
+    styles: PropTypes.shape(stylesType).isRequired
   }
 
   state = {
@@ -19,17 +22,17 @@ class App extends Component {
     const { styles } = this.props;
 
     return (
-      <ContentWrapper
-        dynamicStyles={styles}
-      >
-        <Greetings className='container'>
-          <div className='row'>
-            <RandomAppearText text='Welcome' />
-          </div>
-          <Nav />
-        </Greetings>
-        <SlideBackground dynamicStyles={styles} />
-      </ContentWrapper>
+      <Fragment>
+        <ContentWrapper dynamicStyles={styles}>
+          <Content className='container'>
+            <Msg id='greeting'>
+              <RandomAppearText text={'Hi, I\'m Eric.'} />
+            </Msg>
+            <Nav />
+          </Content>
+        </ContentWrapper>
+        <Resume />
+      </Fragment>
     );
   }
 }
