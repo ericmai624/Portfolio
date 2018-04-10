@@ -23,7 +23,7 @@ const FeaturedProject = () => (
     </Container>
     <Container className="col-12 col-xl-5">
       <h2>
-        MIMOJI{" "}
+        Mimoji&nbsp;
         <span role="img" aria-label="smiling cat">
           😺
         </span>
@@ -33,9 +33,9 @@ const FeaturedProject = () => (
         Mimoji allows the user to select a local computer video with any sizes
         and formats to be played either on the browser or TV via Chromecast.
         Selected video will be transcoded on the fly to browser or Chromecast
-        support formats for high-quality playback. Mimoji is designed to run on
-        the user&apos;s computer locally in order to read real-time file system
-        changes
+        supported formats for high-quality playback. Mimoji is designed to run
+        on the user&apos;s computer locally in order to read real-time file
+        system changes
       </p>
       <p className="techstack">
         Made with{" "}

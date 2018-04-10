@@ -10,6 +10,7 @@ import hideGreeting from "src/actions/hideGreeting";
 
 class More extends PureComponent {
   static propTypes = {
+    isBlackBg: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
     hideGreeting: PropTypes.func.isRequired
   };
@@ -53,7 +54,7 @@ class More extends PureComponent {
     if (element.innerText === " ") {
       this.timeout = setTimeout(this.fadeOutChar);
     } else {
-      this.timeout = setTimeout(this.fadeOutChar, 20);
+      this.timeout = setTimeout(this.fadeOutChar, 15);
     }
 
     return this.timeout;
@@ -73,7 +74,7 @@ class More extends PureComponent {
   );
 
   render() {
-    const { text } = this.props;
+    const { text, isBlackBg } = this.props;
     const { isHovered } = this.state;
 
     return (
@@ -82,6 +83,7 @@ class More extends PureComponent {
         onClick={this.fadeOutChar}
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
+        style={{ zIndex: isBlackBg ? -5 : 1 }}
       >
         {text.split("").map(this.renderWords)}
       </Button>
@@ -89,8 +91,12 @@ class More extends PureComponent {
   }
 }
 
+const mapStateToProps = state => ({
+  isBlackBg: state.app.isBlackBg
+});
+
 const mapDispatchToProps = dispatch => ({
   hideGreeting: bindActionCreators(hideGreeting, dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(More);
+export default connect(mapStateToProps, mapDispatchToProps)(More);

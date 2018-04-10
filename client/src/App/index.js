@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-// import Greeting from './Greeting';
+import Greeting from "./Greeting";
 import MainContent from "./MainContent";
 import ContentWrapper from "./Styled";
 
@@ -19,9 +19,9 @@ class App extends Component {
     const { app } = this.props;
 
     return (
-      <ContentWrapper dynamicStyles={app}>
-        {/* <Greeting display={app.displayGreeting} /> */}
-        <MainContent display={app.displayGreeting} />
+      <ContentWrapper appState={app}>
+        <Greeting display={app.displayGreeting} />
+        <MainContent display={!app.displayGreeting} />
       </ContentWrapper>
     );
   }

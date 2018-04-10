@@ -1,8 +1,8 @@
 import { createReducer } from "util";
 
 const initState = {
-  fontColor: "#000", //
-  isBlackBg: false, //
+  fontColor: "#fff", //
+  isBlackBg: true, //
   displayGreeting: true
 };
 

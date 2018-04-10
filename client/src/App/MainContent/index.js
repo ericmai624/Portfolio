@@ -10,7 +10,8 @@ const MainContent = ({ display }) => (
     style={{
       visibility: display ? "visible" : "hidden",
       zIndex: display ? 1 : -1,
-      opacity: display ? 1 : 0
+      opacity: display ? 1 : 0,
+      height: display ? "auto" : 0
     }}
   >
     <Header />

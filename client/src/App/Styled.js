@@ -4,19 +4,20 @@ const ContentWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: ${({ appState }) => (appState.displayGreeting ? "hidden" : "auto")};
   z-index: 1;
-  background: #000;
+  background: transparent;
   user-select: none;
-  color: ${({ dynamicStyles }) => dynamicStyles.fontColor};
+  color: ${({ appState }) => appState.fontColor};
 
   &::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    transform: ${({ dynamicStyles }) =>
-      dynamicStyles.isBlackBg ? "translateX(-100%)" : "none"};
-    background: #fff;
+    transform: ${({ appState }) =>
+      appState.isBlackBg ? "none" : "translateX(100%)"};
+    background: #000;
     width: 100%;
     height: 100vh;
     z-index: -1;
