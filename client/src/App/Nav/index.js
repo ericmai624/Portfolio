@@ -2,24 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import NavLink from 'src/App/NavLink';
 import NavContainer from './Styled';
 
-const Nav = ({ isVisible, links }) => (
-  <NavContainer isVisible={isVisible}>
-    {links.map(link => (
-      <NavLink key={link} text={link} />
-    ))}
+const Nav = ({ isVisible, text }) => (
+  <NavContainer style={{ display: isVisible ? 'block' : 'none' }}>
+    {text.split('').map((s, i) => <span data-type='special' key={i}>{s}</span>)}
   </NavContainer>
 );
 
 Nav.defaultProps = {
-  links: ['Projects', 'Resume', 'Contact']
+  text: 'Software Engineer / Minimalist.'
 };
 
 Nav.propTypes = {
   isVisible: PropTypes.bool.isRequired,
-  links: PropTypes.arrayOf(PropTypes.string)
+  text: PropTypes.string
 };
 
 const mapStateToProps = state => ({

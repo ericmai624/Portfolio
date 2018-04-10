@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { SiteNav } from './Styled';
+import { SiteNav, HeaderLink, Initial } from './Styled';
 
 class Header extends Component {
   handleClick = () => {
@@ -9,12 +9,13 @@ class Header extends Component {
 
   render() {
     return (
-      <SiteNav className='row'>
-        <div className='col-md-8'>
-          <span>Projects</span>
-          <span>Resume</span>
-          <span>Contact</span>
-        </div>
+      <SiteNav className='row justify-content-center'>
+        <HeaderLink href='/'>
+          <Initial>E</Initial>
+          <b>RIC </b>
+          <Initial>M</Initial>
+          <b>AI</b>
+        </HeaderLink>
       </SiteNav>
     );
   }

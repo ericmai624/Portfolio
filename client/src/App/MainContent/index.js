@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from 'src/App/Header';
+import FeaturedProject from 'src/App/FeaturedProject';
 import Container from './Styled';
 
 const MainContent = ({ display }) => (
@@ -14,6 +15,9 @@ const MainContent = ({ display }) => (
     }}
   >
     <Header />
+    <div className='row justify-content-center'>
+      <FeaturedProject />
+    </div>
   </Container>
 );
 

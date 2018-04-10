@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  font-size: 0.5em;
   padding: 0;
-  margin-right: 1em;
   outline: none;
   border: none;
   text-decoration: underline;

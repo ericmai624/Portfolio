@@ -8,7 +8,7 @@ import Button from './Styled';
 
 import hideGreeting from 'src/actions/hideGreeting';
 
-class NavLink extends PureComponent {
+class More extends PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     hideGreeting: PropTypes.func.isRequired
@@ -91,4 +91,4 @@ const mapDispatchToProps = dispatch => ({
   hideGreeting: bindActionCreators(hideGreeting, dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(NavLink);
+export default connect(null, mapDispatchToProps)(More);
