@@ -37,14 +37,13 @@ const FeaturedProject = () => (
         on the user&apos;s computer locally in order to read real-time file
         system changes
       </p>
-      <p className="techstack">
-        Made with{" "}
+      <p className="techstacks">
+        Made with&nbsp;
         <span role="img" aria-label="heart">
           ❤️
-        </span>{" "}
-        and&nbsp;<TechStack>React</TechStack>&nbsp;
-        <TechStack>Node.js</TechStack>&nbsp;
-        <TechStack>Express</TechStack>&nbsp;
+        </span>&nbsp; and&nbsp;<TechStack>React</TechStack>
+        <TechStack>Node.js</TechStack>
+        <TechStack>Express</TechStack>
       </p>
     </Container>
   </Fragment>

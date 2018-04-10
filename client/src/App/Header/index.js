@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import "particles.js";
 
-import { SiteNav, TextContainer, HeaderLink, Initial, Line } from "./Styled";
+import {
+  SiteNav,
+  TextContainer,
+  HeaderLink,
+  Initial,
+  Line,
+  Role
+} from "./Styled";
 
 class Header extends Component {
   componentDidMount() {
@@ -29,7 +36,8 @@ class Header extends Component {
             className="row justify-content-center"
             style={{ marginBottom: "25px" }}
           >
-            <span className="small">Software Engineer / Minimalist</span>
+            <Role>Software Engineer /&nbsp;</Role>
+            <Role>Minimalist</Role>
           </Line>
           <Line className="row justify-content-center">
             <span>I&nbsp;</span>

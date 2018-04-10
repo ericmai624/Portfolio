@@ -48,3 +48,7 @@ export const Line = styled.div`
     border-right: 3px solid #1d2328;
   }
 `;
+
+export const Role = styled.span`
+  font-size: 0.6em;
+`;

@@ -8,7 +8,7 @@ export const Container = styled.div`
     line-height: 1.45;
   }
 
-  & .techstack {
+  & .techstacks {
     font-size: 0.9em;
   }
 `;
@@ -45,5 +45,6 @@ export const Screenshot = styled.img`
 
 export const TechStack = styled.span`
   padding: 2px 5px;
+  margin: 0 3px;
   background: #f3efef;
 `;
