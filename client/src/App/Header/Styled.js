@@ -16,6 +16,10 @@ export const SiteNav = styled.div`
       rgba(0, 0, 0, 0.5) 100%
     );
   background-blend-mode: screen;
+
+  & .fw-500 {
+    font-weight: 500;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -35,7 +39,6 @@ export const TextContainer = styled.div`
 export const HeaderLink = StyledLink.extend``;
 
 export const Initial = styled.span`
-  font-weight: 700;
   font-size: 1.5em;
 `;
 

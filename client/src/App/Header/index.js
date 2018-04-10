@@ -15,14 +15,14 @@ class Header extends Component {
     return (
       <SiteNav id="particles-js">
         <TextContainer className="container">
-          <Line className="row align-items-end justify-content-center">
+          <Line className="row align-items-end justify-content-center fw-500">
             <HeaderLink href="/">
               <Initial>H</Initial>
-              <b>I, </b>
+              <span>I,&nbsp;</span>
               <Initial>I</Initial>
-              <b>{"'"}M </b>
+              <span>&apos;M </span>
               <Initial>E</Initial>
-              <b>RIC.</b>
+              <span>RIC.</span>
             </HeaderLink>
           </Line>
           <Line
@@ -37,7 +37,7 @@ class Header extends Component {
             <span>turning&nbsp;</span>
             <span>ideas&nbsp;</span>
             <span>into&nbsp;</span>
-            <span id="blinky">reality&nbsp;</span>
+            <span id="blinky">reality.&nbsp;</span>
           </Line>
         </TextContainer>
       </SiteNav>

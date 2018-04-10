@@ -5,6 +5,10 @@ export const Container = styled.div`
   font-family: "Lato", sans-serif;
   width: 100%;
   transition: opacity 0.25s ease-in-out;
+
+  & section {
+    user-select: text;
+  }
 `;
 
 export const Title = styled.h2`

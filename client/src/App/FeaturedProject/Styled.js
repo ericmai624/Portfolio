@@ -2,7 +2,16 @@ import styled from "styled-components";
 
 const lightGrey = "#d4d4d4";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  & .info {
+    font-weight: 300;
+    line-height: 1.45;
+  }
+
+  & .techstack {
+    font-size: 0.9em;
+  }
+`;
 
 export const Title = styled.div`
   display: flex;
@@ -32,4 +41,9 @@ export const Content = styled.div`
 
 export const Screenshot = styled.img`
   width: 100%;
+`;
+
+export const TechStack = styled.span`
+  padding: 2px 5px;
+  background: #f3efef;
 `;

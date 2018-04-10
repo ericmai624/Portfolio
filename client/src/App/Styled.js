@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ContentWrapper = styled.div`
   position: relative;
@@ -10,11 +10,12 @@ const ContentWrapper = styled.div`
   color: ${({ dynamicStyles }) => dynamicStyles.fontColor};
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    transform: ${({ dynamicStyles }) => (dynamicStyles.isBlackBg ? 'translateX(-100%)' : 'none')};
+    transform: ${({ dynamicStyles }) =>
+      dynamicStyles.isBlackBg ? "translateX(-100%)" : "none"};
     background: #fff;
     width: 100%;
     height: 100vh;

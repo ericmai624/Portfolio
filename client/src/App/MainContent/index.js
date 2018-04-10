@@ -17,7 +17,7 @@ const MainContent = ({ display }) => (
     <section className="container">
       <Title>FEATURED</Title>
       <Title>PROJECT</Title>
-      <ProjectContainer className="row">
+      <ProjectContainer className="row justify-content-between">
         <FeaturedProject />
       </ProjectContainer>
     </section>
