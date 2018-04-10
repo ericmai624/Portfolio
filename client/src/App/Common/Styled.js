@@ -42,3 +42,9 @@ export const Jello = keyframes`
     transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
   }
 `;
+
+export const Type = keyframes`
+  50% {
+    border-color: transparent;
+  }
+`;

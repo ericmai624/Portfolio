@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 
 import Header from "src/App/Header";
 import FeaturedProject from "src/App/FeaturedProject";
-import Container from "./Styled";
+import { Container, Title, ProjectContainer } from "./Styled";
 
 const MainContent = ({ display }) => (
   <Container
-    className="container"
     style={{
       visibility: display ? "visible" : "hidden",
       zIndex: display ? 1 : -1,
@@ -15,9 +14,13 @@ const MainContent = ({ display }) => (
     }}
   >
     <Header />
-    <div className="row justify-content-center">
-      <FeaturedProject />
-    </div>
+    <section className="container">
+      <Title>FEATURED</Title>
+      <Title>PROJECT</Title>
+      <ProjectContainer className="row">
+        <FeaturedProject />
+      </ProjectContainer>
+    </section>
   </Container>
 );
 
