@@ -41,6 +41,7 @@ export const Content = styled.div`
 
 export const Screenshot = styled.img`
   width: 100%;
+  cursor: pointer;
 `;
 
 export const TechStack = styled.span`

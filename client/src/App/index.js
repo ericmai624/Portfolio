@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import Greeting from "./Greeting";
+import Layout from "./Layout";
 import MainContent from "./MainContent";
 import ContentWrapper from "./Styled";
 
@@ -16,12 +17,21 @@ class App extends Component {
   state = {};
 
   render() {
-    const { app } = this.props;
+    const {
+      app: { fontColor: color, isBlackBg, displayGreeting }
+    } = this.props;
 
     return (
-      <ContentWrapper appState={app}>
-        <Greeting display={app.displayGreeting} />
-        <MainContent display={!app.displayGreeting} />
+      <ContentWrapper
+        style={{
+          color,
+          backgroundPosition: isBlackBg ? "right bottom" : "left bottom"
+        }}
+      >
+        <Greeting display={displayGreeting} />
+        <Layout display={!displayGreeting}>
+          <MainContent />
+        </Layout>
       </ContentWrapper>
     );
   }

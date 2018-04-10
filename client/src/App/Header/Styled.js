@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledLink, Type } from "src/App/Common/Styled";
 
-export const SiteNav = styled.div`
+export const HeaderContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;

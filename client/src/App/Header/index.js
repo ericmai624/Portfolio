@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "particles.js";
 
 import {
-  SiteNav,
+  HeaderContainer,
   TextContainer,
   HeaderLink,
   Initial,
@@ -14,13 +14,18 @@ class Header extends Component {
   componentDidMount() {
     window.particlesJS.load(
       "particles-js",
-      "particles/particlesjs-config.json"
+      "particles/particlesjs-config.json",
+      () => {
+        const canvas = document.querySelector("#particles-js canvas");
+        if (!canvas) return;
+        canvas.style.zIndex = 100; // Increase z-index to keep cancas on top of other text to allow interactions
+      }
     );
   }
 
   render() {
     return (
-      <SiteNav id="particles-js">
+      <HeaderContainer id="particles-js">
         <TextContainer className="container">
           <Line className="row align-items-end justify-content-center fw-500">
             <HeaderLink href="/">
@@ -48,7 +53,7 @@ class Header extends Component {
             <span id="blinky">reality.&nbsp;</span>
           </Line>
         </TextContainer>
-      </SiteNav>
+      </HeaderContainer>
     );
   }
 }

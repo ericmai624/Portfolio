@@ -18,7 +18,13 @@ const FeaturedProject = () => (
         <MockBtn color="#61c454" />
       </Title>
       <Content className="row">
-        <Screenshot src="/assets/mimoji.jpg" alt="mimoji screenshot" />
+        <a
+          href="https://youtu.be/jJ3qixXlKhE"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Screenshot src="/assets/mimoji.jpg" alt="mimoji screenshot" />
+        </a>
       </Content>
     </Container>
     <Container className="col-12 col-xl-5">
