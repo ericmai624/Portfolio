@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   height: auto;
   line-height: 1.25;
 
-  @media screen and (min-width:992px) {
+  @media screen and (min-width: 992px) {
     margin-top: 2em;
     margin-bottom: 2em;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
@@ -17,7 +17,7 @@ export const ResumeContainer = styled(Container)`
     padding: 1em;
     user-select: text;
 
-    @media screen and (min-width:992px) {
+    @media screen and (min-width: 992px) {
       padding: 3em;
     }
   }
@@ -35,8 +35,7 @@ export const ResumeLinks = styled.a`
   cursor: pointer;
 `;
 
-export const Section = styled.section`
-`;
+export const Section = styled.section``;
 
 export const Achievements = styled.ul`
   padding: 0;

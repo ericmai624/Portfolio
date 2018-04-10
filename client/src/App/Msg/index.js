@@ -1,21 +1,21 @@
-import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { random, range } from 'lodash';
+import React, { PureComponent, Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { random, range } from "lodash";
 
-import Letter from './Styled';
+import Letter from "./Styled";
 
-import triggerBackgroundChange from 'src/actions/triggerBackgroundChange';
+import triggerBackgroundChange from "src/actions/triggerBackgroundChange";
 
 class Msg extends PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     triggerBackgroundChange: PropTypes.func.isRequired
-  }
+  };
 
   componentDidMount() {
-    this.words = document.querySelectorAll('#greeting>span[data-type=special]');
+    this.words = document.querySelectorAll("#greeting>span[data-type=special]");
     this.indices = range(this.words.length);
     this.timeout = setTimeout(this.fadeInChar, 100);
   }
@@ -41,22 +41,24 @@ class Msg extends PureComponent {
     this.indices[i] = this.indices[leng];
     this.indices.pop();
 
-    if (element.innerText === ' ') {
+    if (element.innerText === " ") {
       this.timeout = setTimeout(this.fadeInChar);
     } else {
       this.timeout = setTimeout(this.fadeInChar, 120);
     }
 
     return this.timeout;
-  }
+  };
 
   render() {
     const { text } = this.props;
 
     return (
       <Fragment>
-        {text.split('').map((letter, i) => (
-          <Letter key={i} data-type='special' style={{ opacity: 0 }}>{letter}</Letter>
+        {text.split("").map((letter, i) => (
+          <Letter key={i} data-type="special" style={{ opacity: 0 }}>
+            {letter}
+          </Letter>
         ))}
       </Fragment>
     );

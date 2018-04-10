@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 // import Greeting from './Greeting';
-import MainContent from './MainContent';
-import ContentWrapper from './Styled';
+import MainContent from "./MainContent";
+import ContentWrapper from "./Styled";
 
-import { appType } from 'src/types';
+import { appType } from "src/types";
 
 class App extends Component {
   static propTypes = {
     app: PropTypes.shape(appType).isRequired
-  }
+  };
 
-  state = {
-
-  }
+  state = {};
 
   render() {
     const { app } = this.props;

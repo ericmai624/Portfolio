@@ -1,7 +1,7 @@
-import { createReducer } from 'util';
+import { createReducer } from "util";
 
 const initState = {
-  fontColor: '#000', //
+  fontColor: "#000", //
   isBlackBg: false, //
   displayGreeting: true
 };
@@ -9,7 +9,7 @@ const initState = {
 const handler = {
   BACKGROUND_CHANGE_TRIGGERED: state => ({
     ...state,
-    fontColor: '#000',
+    fontColor: "#000",
     isBlackBg: false
   }),
   HIDE_GREETING: state => ({ ...state, displayGreeting: false })

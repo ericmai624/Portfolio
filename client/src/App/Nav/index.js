@@ -1,17 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import NavContainer from './Styled';
+import NavContainer from "./Styled";
 
 const Nav = ({ isVisible, text }) => (
-  <NavContainer style={{ display: isVisible ? 'block' : 'none' }}>
-    {text.split('').map((s, i) => <span data-type='special' key={i}>{s}</span>)}
+  <NavContainer style={{ display: isVisible ? "block" : "none" }}>
+    {text.split("").map((s, i) => (
+      <span data-type="special" key={i}>
+        {s}
+      </span>
+    ))}
   </NavContainer>
 );
 
 Nav.defaultProps = {
-  text: 'Software Engineer / Minimalist.'
+  text: "Software Engineer / Minimalist."
 };
 
 Nav.propTypes = {

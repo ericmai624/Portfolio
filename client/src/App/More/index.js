@@ -1,25 +1,25 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { random, range } from 'lodash';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { random, range } from "lodash";
 
-import Button from './Styled';
+import Button from "./Styled";
 
-import hideGreeting from 'src/actions/hideGreeting';
+import hideGreeting from "src/actions/hideGreeting";
 
 class More extends PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     hideGreeting: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     isHovered: false
-  }
+  };
 
   componentDidMount() {
-    this.elements = document.querySelectorAll('[data-type=special]');
+    this.elements = document.querySelectorAll("[data-type=special]");
     this.indices = range(this.elements.length);
   }
 
@@ -29,12 +29,12 @@ class More extends PureComponent {
 
   onTransformComplete = () => {
     this.props.hideGreeting();
-  }
+  };
 
   handleHover = () => {
     const { isHovered } = this.state;
     this.setState({ isHovered: !isHovered });
-  }
+  };
 
   fadeOutChar = () => {
     if (!this.indices.length) {
@@ -50,24 +50,26 @@ class More extends PureComponent {
     this.indices[i] = this.indices[leng];
     this.indices.pop();
 
-    if (element.innerText === ' ') {
+    if (element.innerText === " ") {
       this.timeout = setTimeout(this.fadeOutChar);
     } else {
       this.timeout = setTimeout(this.fadeOutChar, 20);
     }
 
     return this.timeout;
-  }
+  };
 
   clearTransform = () => {
     if (this.timeout) {
       clearTimeout(this.timeout);
       this.timeout = null;
     }
-  }
+  };
 
   renderWords = (word, i) => (
-    <small key={i} data-type='special'>{word}</small>
+    <small key={i} data-type="special">
+      {word}
+    </small>
   );
 
   render() {
@@ -81,7 +83,7 @@ class More extends PureComponent {
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
       >
-        {text.split('').map(this.renderWords)}
+        {text.split("").map(this.renderWords)}
       </Button>
     );
   }

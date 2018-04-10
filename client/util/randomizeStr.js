@@ -1,9 +1,9 @@
-import { random } from 'lodash';
+import { random } from "lodash";
 
 const getRandomChar = () => String.fromCharCode(random(97, 122));
 
-const randomizeStr = (str) => {
-  let res = '';
+const randomizeStr = str => {
+  let res = "";
   const set = new Set();
 
   for (let i = 0; i < str.length; i++) {

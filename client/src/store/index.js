@@ -1,7 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers } from "redux";
 // import logger from 'redux-logger';
 
-import app from './app';
+import app from "./app";
 
 const reducer = combineReducers({
   app

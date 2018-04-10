@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Landing = styled.div`
   position: absolute;
@@ -7,7 +7,7 @@ export const Landing = styled.div`
   transform: translateY(-50%);
   font-size: 2.3em;
 
-  @media screen and (max-width:992px) {
+  @media screen and (max-width: 992px) {
     display: flex;
     flex-direction: column;
     left: 0;
@@ -18,5 +18,5 @@ export const Landing = styled.div`
 
 export const MsgContainer = styled.div`
   display: inline-block;
-  margin-bottom: 0.5em;  
+  margin-bottom: 0.5em;
 `;
