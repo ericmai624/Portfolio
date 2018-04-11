@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Content, Title, Screenshot, MockBtn } from "./Styled";
 
 const MockChrome = ({ imgSrc, project }) => (
-  <div className="col-12 col-xl-6">
+  <div className="col-12">
     <Title className="row">
       <MockBtn color="#ed6a5f" />
       <MockBtn color="#f6c251" />

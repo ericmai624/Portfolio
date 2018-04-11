@@ -12,7 +12,7 @@ import {
 const Mimoji = ({ techStacks }) => (
   <Fragment>
     <MockChrome imgSrc="/assets/mimoji.jpg" project="mimoji" />
-    <div className="col-12 col-xl-5">
+    <div className="col-12">
       <h2>
         Mimoji&nbsp;
         <Emoji>😺</Emoji>

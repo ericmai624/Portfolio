@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  margin-bottom: 100px;
+  margin-bottom: 167px;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
     radial-gradient(
       91% 146%,

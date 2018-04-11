@@ -7,7 +7,7 @@ import { ProjectInfo, ProjectTSList, ProjectTS } from "src/App/Common/Styled";
 const Justag = ({ techStacks }) => (
   <Fragment>
     <MockChrome imgSrc="/assets/jt_macbook.jpg" project="justag" />
-    <div className="col-12 col-xl-5">
+    <div className="col-12">
       <h2>Justag</h2>
       <h4>Just another movie rating app</h4>
       <ProjectInfo>
