@@ -13,6 +13,7 @@ export const ProjectContainer = styled.div`
 `;
 
 export const Section = styled.section`
+  margin-top: 42px;
   margin-bottom: 118px;
 `;
 

@@ -20,6 +20,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "react/no-array-index-key": 0,
-    "arrow-parens": [2, "as-needed", { requireForBlockBody: false }]
+    "arrow-parens": [2, "as-needed", { requireForBlockBody: false }],
+    "object-curly-newline": 0
   }
 };
