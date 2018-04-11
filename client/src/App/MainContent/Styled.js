@@ -8,6 +8,10 @@ export const Title = styled.h2`
 `;
 
 export const ProjectContainer = styled.div`
-  margin: 25px 0 100px 0;
+  margin-top: 25px;
   padding: 1em 15px;
+`;
+
+export const Section = styled.section`
+  margin-bottom: 150px;
 `;

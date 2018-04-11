@@ -16,6 +16,7 @@ module.exports = {
     "no-console": ["error", { allow: ["warn", "error", "log"] }],
     "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
     "max-len": 0,
+    "jsx-a11y/accessible-emoji": 0,
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "react/no-array-index-key": 0,

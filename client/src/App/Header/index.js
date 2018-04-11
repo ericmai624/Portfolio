@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import "particles.js";
 
-import {
-  HeaderContainer,
-  TextContainer,
-  HeaderLink,
-  Initial,
-  Line,
-  Role
-} from "./Styled";
+import { HeaderContainer, TextContainer, Intro, Blinky, Role } from "./Styled";
 
 class Header extends Component {
   componentDidMount() {
@@ -27,31 +20,24 @@ class Header extends Component {
     return (
       <HeaderContainer id="particles-js">
         <TextContainer className="container">
-          <Line className="row align-items-end justify-content-center fw-500">
-            <HeaderLink href="/">
-              <Initial>H</Initial>
-              <span>I,&nbsp;</span>
-              <Initial>I</Initial>
-              <span>&apos;M </span>
-              <Initial>E</Initial>
-              <span>RIC.</span>
-            </HeaderLink>
-          </Line>
-          <Line
+          <div className="row justify-content-center">
+            <Intro>Hi, I&apos;m Eric Mai.</Intro>
+          </div>
+          <div
             className="row justify-content-center"
             style={{ marginBottom: "25px" }}
           >
             <Role>Software Engineer /&nbsp;</Role>
             <Role>Minimalist</Role>
-          </Line>
-          <Line className="row justify-content-center">
+          </div>
+          <div className="row justify-content-center">
             <span>I&nbsp;</span>
             <span>love&nbsp;</span>
             <span>turning&nbsp;</span>
             <span>ideas&nbsp;</span>
             <span>into&nbsp;</span>
-            <span id="blinky">reality.&nbsp;</span>
-          </Line>
+            <Blinky>reality.&nbsp;</Blinky>
+          </div>
         </TextContainer>
       </HeaderContainer>
     );

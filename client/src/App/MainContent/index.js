@@ -1,20 +1,23 @@
 import React, { Fragment } from "react";
 
-import FeaturedProject from "src/App/FeaturedProject";
-import { Title, ProjectContainer } from "./Styled";
+import Mimoji from "src/App/Mimoji";
+import Justag from "src/App/Justag";
+import { Title, ProjectContainer, Section } from "./Styled";
 
 const MainContent = () => (
   <Fragment>
-    <section className="container">
+    <Section className="container">
       <Title>FEATURED</Title>
       <Title>PROJECTS</Title>
-      <ProjectContainer className="row justify-content-between">
-        <FeaturedProject />
+      <ProjectContainer className="row align-items-center justify-content-between">
+        <Mimoji />
       </ProjectContainer>
-      <ProjectContainer className="row justify-content-between">
-        another project
+    </Section>
+    <Section className="container">
+      <ProjectContainer className="row align-items-center justify-content-between">
+        <Justag />
       </ProjectContainer>
-    </section>
+    </Section>
   </Fragment>
 );
 
