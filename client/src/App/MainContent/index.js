@@ -1,26 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 
+import Intro from "src/App/Intro";
 import { Mimoji, Justag } from "src/App/Projects";
-import { TitleContainer, Title, Section, SectionII } from "./Styled";
+import { Title, Section } from "./Styled";
 
-const MainContent = () => (
-  <Fragment>
-    <TitleContainer className="container d-flex justify-content-center">
-      <Title>FEATURED PROJECTS</Title>
-    </TitleContainer>
-    <Section id="mimoji" className="container">
-      <Mimoji />
-    </Section>
-    <Section id="justag" className="container">
-      <Justag />
-    </Section>
-    <SectionII>
-      <div className="container">
-        <Title>PROJECT</Title>
-        <Title>COMPONENTS</Title>
-      </div>
-    </SectionII>
-  </Fragment>
-);
+class MainContent extends Component {
+  state = {};
+
+  render() {
+    return (
+      <Fragment>
+        <Section>
+          <Intro />
+        </Section>
+        <Section>
+          <Title>FEATURED PROJECTS</Title>
+        </Section>
+        <Section id="mimoji">
+          <Mimoji />
+        </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
+      </Fragment>
+    );
+  }
+}
 
 export default MainContent;

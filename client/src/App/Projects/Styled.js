@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledLink } from "src/App/Common/Styled";
 
 export const Wrapper = styled.div.attrs({
   className: "row justify-content-center"
@@ -11,6 +12,9 @@ export const Wrapper = styled.div.attrs({
 export const Container = styled.div.attrs({
   className: "col-12 col-lg-10"
 })`
+  position: relative;
+  z-index: 200;
+
   @media screen and (min-width: 992px) {
     border-radius: 4px;
     overflow-x: hidden;
@@ -62,8 +66,21 @@ export const Tech = styled.span`
   color: #ff4e50;
 `;
 
-export const SeeItOnGithub = styled.div.attrs({
+export const MessageLine = styled.div.attrs({
   className: "row justify-content-center"
 })`
   margin: 50px 0;
+  font-weight: 500;
+`;
+
+export const MessageText = StyledLink.extend`
+  position: relative;
+  z-index: 200;
+  padding: 5px 0;
+  border-bottom: 3px solid transparent;
+  transition: border 0.25s ease;
+
+  &:hover {
+    border-bottom: 3px solid #000;
+  }
 `;

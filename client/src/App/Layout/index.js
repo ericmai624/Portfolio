@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Header from "src/App/Header";
+import Particles from "src/App/Particles";
 import Container from "./Styled";
 
 const Layout = ({ children, display }) => (
@@ -13,8 +13,8 @@ const Layout = ({ children, display }) => (
       height: display ? "auto" : 0
     }}
   >
-    <Header />
     {children}
+    <Particles />
   </Container>
 );
 

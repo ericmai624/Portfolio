@@ -9,9 +9,10 @@ import {
   Description,
   TechList,
   Tech,
-  SeeItOnGithub
+  MessageLine,
+  MessageText
 } from "../Styled";
-import { StyledLink, Emoji } from "src/App/Common/Styled";
+import { Emoji } from "src/App/Common/Styled";
 
 const Template = ({
   onClick,
@@ -50,11 +51,11 @@ const Template = ({
         </DetailContainer>
       </Container>
     </Wrapper>
-    <SeeItOnGithub>
-      <StyledLink href={githubURL} target="_blank" rel="noopener noreferrer">
+    <MessageLine>
+      <MessageText href={githubURL} target="_blank" rel="noopener noreferrer">
         See it on Github
-      </StyledLink>
-    </SeeItOnGithub>
+      </MessageText>
+    </MessageLine>
   </Fragment>
 );
 

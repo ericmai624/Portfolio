@@ -23,6 +23,7 @@ class App extends Component {
 
     return (
       <ContentWrapper
+        id="main-content-wrapper"
         style={{
           color,
           backgroundPosition: isBlackBg ? "right bottom" : "left bottom"

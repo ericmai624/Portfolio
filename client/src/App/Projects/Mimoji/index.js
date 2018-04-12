@@ -22,7 +22,7 @@ class Mimoji extends PureComponent {
       "Selected video will be transcoded on the fly to browser or Chromecast " +
       "supported formats for high-quality playback. Mimoji is designed to run on " +
       "the user's computer locally in order to read real-time file system changes",
-    githubURL: ""
+    githubURL: "https://github.com/ericmai624/mimoji-main"
   };
 
   static propTypes = {
