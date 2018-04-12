@@ -1,10 +1,22 @@
 import styled from "styled-components";
 
-export const Container = styled.div.attrs({
-  className: "row"
+export const Wrapper = styled.div.attrs({
+  className: "row justify-content-center"
 })`
-  position: relative;
-  padding: 0 15px;
+  @media screen and (max-width: 992px) {
+    padding: 0 15px;
+  }
+`;
+
+export const Container = styled.div.attrs({
+  className: "col-12 col-lg-10"
+})`
+  @media screen and (min-width: 992px) {
+    border-radius: 4px;
+    overflow-x: hidden;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 `;
 
 export const DetailContainer = styled.div`
@@ -16,16 +28,17 @@ export const DetailContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     top: 20px;
-    right: 15px;
+    right: 0;
     width: calc(100% - (100% / 1.618));
     height: calc(100% - 20px);
     padding: 0 1em;
     overflow: hidden;
     color: #fff;
     background: rgba(0, 0, 0, 0.9);
+    border-radius: 0 0 4px 0;
     transform: ${({ displayInfo }) =>
-      displayInfo ? "none" : "translate3d(100%, 0, 0)"};
-    transition: transform 0.5s ease-in-out;
+      displayInfo ? "translate3d(0, 0, 0)" : "translate3d(100%, 0, 0)"};
+    transition: transform 0.5s ease;
   }
 `;
 

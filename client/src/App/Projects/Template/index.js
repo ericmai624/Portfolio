@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import MockChrome from "src/App/MockChrome";
 import {
+  Wrapper,
   Container,
   DetailContainer,
   Description,
@@ -24,28 +25,32 @@ const Template = ({
   githubURL
 }) => (
   <Fragment>
-    <Container>
-      <MockChrome
-        imgSrc={screenshot}
-        project={name}
-        displayInfo={displayInfo}
-        onClick={onClick}
-      />
-      <DetailContainer displayInfo={displayInfo}>
-        {emoji ? (
-          <h2>
-            {name}
-            &nbsp;<Emoji>{emoji}</Emoji>
-          </h2>
-        ) : (
-          <h2>{name}</h2>
-        )}
-        <small>{summary}</small>
-        <Description>{description}</Description>
-        <TechList>{techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}</TechList>
-      </DetailContainer>
-    </Container>
-    <SeeItOnGithub className="row">
+    <Wrapper>
+      <Container style={{ padding: 0 }}>
+        <MockChrome
+          imgSrc={screenshot}
+          project={name}
+          displayInfo={displayInfo}
+          onClick={onClick}
+        />
+        <DetailContainer displayInfo={displayInfo}>
+          {emoji ? (
+            <h2>
+              {name}
+              &nbsp;<Emoji>{emoji}</Emoji>
+            </h2>
+          ) : (
+            <h2>{name}</h2>
+          )}
+          <small>{summary}</small>
+          <Description>{description}</Description>
+          <TechList>
+            {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
+          </TechList>
+        </DetailContainer>
+      </Container>
+    </Wrapper>
+    <SeeItOnGithub>
       <StyledLink href={githubURL} target="_blank" rel="noopener noreferrer">
         See it on Github
       </StyledLink>

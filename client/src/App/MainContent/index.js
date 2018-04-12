@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
 
 import { Mimoji, Justag } from "src/App/Projects";
-import { Title, Section, SectionII } from "./Styled";
+import { TitleContainer, Title, Section, SectionII } from "./Styled";
 
 const MainContent = () => (
   <Fragment>
-    <div className="container">
-      <Title>FEATURED</Title>
-      <Title>PROJECTS</Title>
-    </div>
+    <TitleContainer className="container d-flex justify-content-center">
+      <Title>FEATURED PROJECTS</Title>
+    </TitleContainer>
     <Section id="mimoji" className="container">
       <Mimoji />
     </Section>
