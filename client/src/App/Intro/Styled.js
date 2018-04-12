@@ -10,7 +10,6 @@ export const TextContainer = styled.div.attrs({
   justify-content: center;
   font-size: 1.8em;
   color: #1d2328;
-  z-index: -2;
 `;
 
 export const Blinky = styled.span`

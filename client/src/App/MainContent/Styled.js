@@ -7,7 +7,8 @@ export const Section = styled.section.attrs({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
+  margin-bottom: 200px;
 `;
 
 export const Title = styled.h2`

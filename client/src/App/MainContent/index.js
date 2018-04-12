@@ -1,13 +1,26 @@
 import React, { Fragment, Component } from "react";
+import LazyLoad from "react-lazyload";
 
 import Intro from "src/App/Intro";
 import { Mimoji, Justag } from "src/App/Projects";
 import { Title, Section } from "./Styled";
 
 class MainContent extends Component {
-  state = {};
+  state = {
+    innerHeight: window.innerHeight
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  handleResize = () => {
+    this.setState({ innerHeight: window.innerHeight });
+  };
 
   render() {
+    const { innerHeight } = this.state;
+
     return (
       <Fragment>
         <Section>
@@ -17,10 +30,14 @@ class MainContent extends Component {
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
-          <Mimoji />
+          <LazyLoad height="100%" offset={-(innerHeight * 0.3)} overflow once>
+            <Mimoji />
+          </LazyLoad>
         </Section>
         <Section id="justag">
-          <Justag />
+          <LazyLoad height="100%" offset={-(innerHeight * 0.3)} overflow once>
+            <Justag />
+          </LazyLoad>
         </Section>
       </Fragment>
     );
