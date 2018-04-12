@@ -15,7 +15,7 @@ import {
 } from "../Styled";
 import { Emoji } from "src/App/Common/Styled";
 
-import "./animation.css";
+import "public/css/animation.css";
 
 const Template = ({
   onClick,

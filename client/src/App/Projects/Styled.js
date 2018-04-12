@@ -12,9 +12,6 @@ export const Wrapper = styled.div.attrs({
 export const Container = styled.div.attrs({
   className: "col-12 col-lg-10"
 })`
-  position: relative;
-  z-index: 200;
-
   @media screen and (min-width: 992px) {
     border-radius: 4px;
     overflow-x: hidden;
@@ -74,8 +71,6 @@ export const MessageLine = styled.div.attrs({
 `;
 
 export const MessageText = StyledLink.extend`
-  position: relative;
-  z-index: 200;
   padding: 5px 0;
   border-bottom: 3px solid transparent;
   transition: border 0.25s ease;

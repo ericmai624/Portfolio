@@ -17,3 +17,12 @@
 .lazyload-appear-active {
   animation-duration: 1s;
 }
+
+.main-content-appear {
+  opacity: 0;
+}
+
+.main-content-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}

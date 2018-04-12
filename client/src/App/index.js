@@ -21,19 +21,23 @@ class App extends Component {
       app: { fontColor: color, isBlackBg, displayGreeting }
     } = this.props;
 
+    if (displayGreeting) {
+      return (
+        <ContentWrapper
+          style={{
+            color,
+            backgroundPosition: isBlackBg ? "right bottom" : "left bottom"
+          }}
+        >
+          <Greeting display={displayGreeting} />
+        </ContentWrapper>
+      );
+    }
+
     return (
-      <ContentWrapper
-        id="main-content-wrapper"
-        style={{
-          color,
-          backgroundPosition: isBlackBg ? "right bottom" : "left bottom"
-        }}
-      >
-        <Greeting display={displayGreeting} />
-        <Layout display={!displayGreeting}>
-          <MainContent />
-        </Layout>
-      </ContentWrapper>
+      <Layout>
+        <MainContent />
+      </Layout>
     );
   }
 }

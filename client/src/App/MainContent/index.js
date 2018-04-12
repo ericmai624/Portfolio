@@ -7,7 +7,7 @@ import { Title, Section } from "./Styled";
 
 class MainContent extends Component {
   state = {
-    innerHeight: window.innerHeight
+    lazyloadOffset: window.innerHeight * -0.25
   };
 
   componentDidMount() {
@@ -15,11 +15,11 @@ class MainContent extends Component {
   }
 
   handleResize = () => {
-    this.setState({ innerHeight: window.innerHeight });
+    this.setState({ lazyloadOffset: window.innerHeight * -0.25 });
   };
 
   render() {
-    const { innerHeight } = this.state;
+    const { lazyloadOffset } = this.state;
 
     return (
       <Fragment>
@@ -30,12 +30,12 @@ class MainContent extends Component {
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
-          <LazyLoad height="100%" offset={-(innerHeight * 0.3)} overflow once>
+          <LazyLoad height="100%" offset={lazyloadOffset} once>
             <Mimoji />
           </LazyLoad>
         </Section>
         <Section id="justag">
-          <LazyLoad height="100%" offset={-(innerHeight * 0.3)} overflow once>
+          <LazyLoad height="100%" offset={lazyloadOffset} once>
             <Justag />
           </LazyLoad>
         </Section>

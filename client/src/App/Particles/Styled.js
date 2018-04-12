@@ -6,7 +6,7 @@ const CanvasContainer = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  z-index: -1;
 `;
 
 export default CanvasContainer;
