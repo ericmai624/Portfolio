@@ -10,12 +10,38 @@
   }
 }
 
-.lazyload-appear {
+@keyframes slowFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.lazyload-content-appear {
   animation-name: fadeInUp;
 }
 
-.lazyload-appear-active {
+.lazyload-content-appear-active {
   animation-duration: 1s;
+}
+
+.lazyload-msg-appear {
+  animation-name: slowFadeIn;
+}
+
+.lazyload-msg-appear-active {
+  animation-duration: 2s;
 }
 
 .main-content-appear {

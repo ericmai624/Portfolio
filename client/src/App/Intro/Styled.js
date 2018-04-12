@@ -8,7 +8,7 @@ export const TextContainer = styled.div.attrs({
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8em;
+  font-size: 2em;
   color: #1d2328;
 `;
 

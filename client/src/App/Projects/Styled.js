@@ -66,7 +66,7 @@ export const Tech = styled.span`
 export const MessageLine = styled.div.attrs({
   className: "row justify-content-center"
 })`
-  margin-top: 138px;
+  margin-top: 100px;
   font-weight: 500;
 `;
 
