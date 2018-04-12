@@ -6,36 +6,28 @@ import { Mimoji, Justag } from "src/App/Projects";
 import { Title, Section } from "./Styled";
 
 class MainContent extends Component {
-  state = {
-    lazyloadOffset: window.innerHeight * -0.25
-  };
+  state = {};
 
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-  }
-
-  handleResize = () => {
-    this.setState({ lazyloadOffset: window.innerHeight * -0.25 });
-  };
+  componentDidMount() {}
 
   render() {
-    const { lazyloadOffset } = this.state;
+    const lazyloadOffset = window.innerHeight * -0.2;
 
     return (
       <Fragment>
         <Section>
           <Intro />
         </Section>
-        <Section>
+        <Section style={{ height: "200px", marginBottom: 0 }}>
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
-          <LazyLoad height="100%" offset={lazyloadOffset} once>
+          <LazyLoad height="50%" offset={lazyloadOffset} once>
             <Mimoji />
           </LazyLoad>
         </Section>
         <Section id="justag">
-          <LazyLoad height="100%" offset={lazyloadOffset} once>
+          <LazyLoad height="50%" offset={lazyloadOffset} once>
             <Justag />
           </LazyLoad>
         </Section>

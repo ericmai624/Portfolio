@@ -9,10 +9,6 @@ export const Section = styled.section.attrs({
   justify-content: center;
   height: 100%;
   margin-bottom: 200px;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
 `;
 
 export const Title = styled.h2`

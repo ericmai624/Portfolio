@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node server",
-    "dev": "concurrently --names react,express --prefix-colors blue,green \"webpack --mode development -w\" \"nodemon -w server\"",
-    "build": "webpack --mode production"
+    "dev":
+      "concurrently --names react,express --prefix-colors blue,green \"webpack --mode development -w\" \"nodemon -w server\"",
+    "build": "webpack --mode production",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
