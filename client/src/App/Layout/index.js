@@ -1,19 +1,24 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Motion, spring } from "react-motion";
 
 import Particles from "src/App/Particles";
 import Container from "./Styled";
 
 const Layout = ({ children }) => (
-  <TransitionGroup component={null} appear>
-    <CSSTransition timeout={1000} classNames="main-content">
+  <Motion
+    defaultStyle={{ opacity: 0 }}
+    style={{ opacity: spring(1, { stiffness: 50, precision: 0.1 }) }}
+  >
+    {({ opacity }) => (
       <Fragment>
-        <Container id="layout">{children}</Container>
+        <Container id="layout" style={{ opacity }}>
+          {children}
+        </Container>
         <Particles />
       </Fragment>
-    </CSSTransition>
-  </TransitionGroup>
+    )}
+  </Motion>
 );
 
 Layout.defaultProps = {

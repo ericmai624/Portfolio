@@ -12,6 +12,9 @@ export const Wrapper = styled.div.attrs({
 export const Container = styled.div.attrs({
   className: "col-12 col-lg-10"
 })`
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+
   @media screen and (min-width: 992px) {
     border-radius: 4px;
     overflow-x: hidden;
@@ -66,6 +69,7 @@ export const Tech = styled.span`
 export const MessageLine = styled.div.attrs({
   className: "row justify-content-center"
 })`
+  opacity: 0;
   margin-top: 100px;
   font-weight: 500;
 `;

@@ -22,12 +22,12 @@ class MainContent extends Component {
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
-          <LazyLoad height="50%" offset={lazyloadOffset} once>
+          <LazyLoad height="100%" offset={lazyloadOffset}>
             <Mimoji />
           </LazyLoad>
         </Section>
         <Section id="justag">
-          <LazyLoad height="50%" offset={lazyloadOffset} once>
+          <LazyLoad height="100%" offset={lazyloadOffset}>
             <Justag />
           </LazyLoad>
         </Section>
