@@ -1,6 +1,5 @@
 import React, { Component, createRef, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Motion, spring } from "react-motion";
 
 import MockChrome from "src/App/MockChrome";
 import {
@@ -21,8 +20,6 @@ class Template extends Component {
   };
 
   static propTypes = {
-    onClick: PropTypes.func.isRequired,
-    displayInfo: PropTypes.bool.isRequired,
     emoji: PropTypes.node,
     screenshot: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -33,37 +30,55 @@ class Template extends Component {
   };
 
   state = {
-    displayMessage: false
+    displayChrome: false,
+    displayLinks: false,
+    displayInfo: false
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.fadeInChrome);
   }
 
   componentWillUnmount() {
-    this.removeScrollListener();
+    this.removeFadeInChromeListener();
+    this.removeFadeInLinksListener();
   }
 
-  messageRef = createRef();
-
-  removeScrollListener = () => {
-    window.removeEventListener("scroll", this.handleScroll);
-  };
-
-  handleScroll = () => {
-    const { displayMessage } = this.state;
-    const { top } = this.messageRef.current.getBoundingClientRect();
-    const { innerHeight } = window;
-    const threshold = innerHeight * 0.88;
-    if (top <= threshold && !displayMessage) {
-      this.setState({ displayMessage: true }, this.removeScrollListener);
+  fadeInChrome = () => {
+    const { top } = this.chrome.current.getBoundingClientRect();
+    const threshold = window.innerHeight - 100;
+    if (top <= threshold) {
+      this.setState({ displayChrome: true }, this.removeFadeInChromeListener);
+      window.addEventListener("scroll", this.fadeInLinks);
     }
   };
 
+  fadeInLinks = () => {
+    const { top } = this.links.current.getBoundingClientRect();
+    const threshold = window.innerHeight - 50;
+    if (top <= threshold) {
+      this.setState({ displayLinks: true }, this.removeFadeInLinksListener);
+    }
+  };
+
+  handleHover = () => {
+    // const { displayInfo } = this.state;
+    // this.setState({ displayInfo: !displayInfo });
+  };
+
+  removeFadeInChromeListener = () => {
+    window.removeEventListener("scroll", this.fadeInChrome);
+  };
+
+  removeFadeInLinksListener = () => {
+    window.removeEventListener("scroll", this.fadeInLinks);
+  };
+
+  chrome = createRef(); // Chrome mockups
+  links = createRef(); // parent of links to github or dev process
+
   render() {
     const {
-      onClick,
-      displayInfo,
       emoji,
       screenshot,
       name,
@@ -72,72 +87,50 @@ class Template extends Component {
       techStacks,
       githubURL
     } = this.props;
-    const { displayMessage } = this.state;
+    const { displayChrome, displayLinks, displayInfo } = this.state;
 
     return (
       <Fragment>
-        <Motion
-          defaultStyle={{ opacity: 0, transform: 100 }}
-          style={{
-            opacity: spring(1, { stiffness: 60 }),
-            transform: spring(0, { stiffness: 60, damping: 15 })
-          }}
-        >
-          {({ opacity, transform }) => (
-            <Wrapper>
-              <Container
-                style={{
-                  opacity,
-                  transform: `translate3d(0, ${transform}%, 0)`,
-                  padding: 0
-                }}
-              >
-                <MockChrome
-                  imgSrc={screenshot}
-                  project={name}
-                  displayInfo={displayInfo}
-                  onClick={onClick}
-                />
-                <DetailContainer displayInfo={displayInfo}>
-                  {emoji ? (
-                    <h2>
-                      {name}
-                      &nbsp;<Emoji>{emoji}</Emoji>
-                    </h2>
-                  ) : (
-                    <h2>{name}</h2>
-                  )}
-                  <small>{summary}</small>
-                  <Description>{description}</Description>
-                  <TechList>
-                    {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
-                  </TechList>
-                </DetailContainer>
-              </Container>
-            </Wrapper>
-          )}
-        </Motion>
-        <Motion
-          defaultStyle={{ opacity: 0 }}
-          style={{
-            opacity: spring(displayMessage ? 1 : 0, {
-              stiffness: 40,
-              damping: 15
-            })
-          }}
-        >
-          {interpolatingStyle => (
-            <MessageLine innerRef={this.messageRef} style={interpolatingStyle}>
-              <MessageText
-                href={githubURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                See it on Github
-              </MessageText>
-            </MessageLine>
-          )}
-        </Motion>
+        <Wrapper>
+          <Container
+            innerRef={this.chrome}
+            onMouseEnter={this.handleHover}
+            onMouseLeave={this.handleHover}
+            displayChrome={displayChrome}
+            style={{ padding: 0 }}
+          >
+            <MockChrome
+              imgSrc={screenshot}
+              project={name}
+              displayInfo={displayInfo}
+            />
+            <DetailContainer displayInfo={displayInfo}>
+              {emoji ? (
+                <h2>
+                  {name}
+                  &nbsp;<Emoji>{emoji}</Emoji>
+                </h2>
+              ) : (
+                <h2>{name}</h2>
+              )}
+              <small>{summary}</small>
+              <Description>{description}</Description>
+              <TechList>
+                {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
+              </TechList>
+            </DetailContainer>
+          </Container>
+        </Wrapper>
+        <MessageLine innerRef={this.links} displayLinks={displayLinks}>
+          <MessageText>Dev process</MessageText>
+          <MessageText
+            href={githubURL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Source code
+          </MessageText>
+        </MessageLine>
       </Fragment>
     );
   }

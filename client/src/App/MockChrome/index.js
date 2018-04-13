@@ -9,7 +9,7 @@ import {
   Buttons
 } from "./Styled";
 
-const MockChrome = ({ imgSrc, project, displayInfo, onClick }) => (
+const MockChrome = ({ imgSrc, project }) => (
   <ChromeWrapper>
     <TitleBar>
       <Buttons color="#ed6a5f" />
@@ -17,21 +17,14 @@ const MockChrome = ({ imgSrc, project, displayInfo, onClick }) => (
       <Buttons color="#61c454" />
     </TitleBar>
     <Content>
-      <Screenshot
-        onClick={onClick}
-        displayInfo={displayInfo}
-        src={imgSrc}
-        alt={`${project} screenshot`}
-      />
+      <Screenshot src={imgSrc} alt={`${project} screenshot`} />
     </Content>
   </ChromeWrapper>
 );
 
 MockChrome.propTypes = {
   imgSrc: PropTypes.string.isRequired,
-  project: PropTypes.string,
-  displayInfo: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  project: PropTypes.string
 };
 
 MockChrome.defaultProps = {

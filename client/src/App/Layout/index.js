@@ -8,7 +8,7 @@ import Container from "./Styled";
 const Layout = ({ children }) => (
   <Motion
     defaultStyle={{ opacity: 0 }}
-    style={{ opacity: spring(1, { stiffness: 50, precision: 0.1 }) }}
+    style={{ opacity: spring(1, { stiffness: 40, damping: 14 }) }}
   >
     {({ opacity }) => (
       <Fragment>

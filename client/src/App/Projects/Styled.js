@@ -12,8 +12,14 @@ export const Wrapper = styled.div.attrs({
 export const Container = styled.div.attrs({
   className: "col-12 col-lg-10"
 })`
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
+  opacity: ${({ displayChrome }) => (displayChrome ? 1 : 0)};
+  transform: translate3d(
+    0,
+    ${({ displayChrome }) => (displayChrome ? 0 : "200px")},
+    0
+  );
+  transition: transform 0.6s ease-out,
+    opacity 0.6s cubic-bezier(0.694, 0, 0.335, 1) 0s;
 
   @media screen and (min-width: 992px) {
     border-radius: 4px;
@@ -32,14 +38,13 @@ export const DetailContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     top: 20px;
-    right: 0;
-    width: calc(100% - (100% / 1.618));
+    left: 0;
+    width: 100%;
     height: calc(100% - 20px);
-    padding: 0 1em;
+    padding: 0 10%;
     overflow: hidden;
     color: #fff;
     background: rgba(0, 0, 0, 0.9);
-    border-radius: 0 0 4px 0;
     transform: ${({ displayInfo }) =>
       displayInfo ? "translate3d(0, 0, 0)" : "translate3d(100%, 0, 0)"};
     transition: transform 0.5s ease;
@@ -69,13 +74,15 @@ export const Tech = styled.span`
 export const MessageLine = styled.div.attrs({
   className: "row justify-content-center"
 })`
-  opacity: 0;
+  opacity: ${({ displayLinks }) => (displayLinks ? 1 : 0)};
   margin-top: 100px;
   font-weight: 500;
+  transition: opacity 0.6s cubic-bezier(0.694, 0, 0.335, 1) 0s;
 `;
 
 export const MessageText = StyledLink.extend`
   padding: 5px 0;
+  margin-right: 2em;
   border-bottom: 3px solid transparent;
   transition: border 0.25s ease;
 

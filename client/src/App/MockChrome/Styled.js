@@ -40,6 +40,5 @@ export const Screenshot = styled.img`
   transition: all 0.6s ease-in-out;
 
   @media screen and (min-width: 992px) {
-    cursor: ${({ displayInfo }) => (displayInfo ? "auto" : "pointer")};
   }
 `;

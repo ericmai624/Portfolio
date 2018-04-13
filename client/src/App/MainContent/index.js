@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from "react";
-import LazyLoad from "react-lazyload";
 
 import Intro from "src/App/Intro";
 import { Mimoji, Justag } from "src/App/Projects";
@@ -11,8 +10,6 @@ class MainContent extends Component {
   componentDidMount() {}
 
   render() {
-    const lazyloadOffset = window.innerHeight * -0.2;
-
     return (
       <Fragment>
         <Section>
@@ -22,14 +19,25 @@ class MainContent extends Component {
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
-          <LazyLoad height="100%" offset={lazyloadOffset}>
-            <Mimoji />
-          </LazyLoad>
+          <Mimoji />
         </Section>
         <Section id="justag">
-          <LazyLoad height="100%" offset={lazyloadOffset}>
-            <Justag />
-          </LazyLoad>
+          <Justag />
+        </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
+        <Section id="justag">
+          <Justag />
         </Section>
       </Fragment>
     );

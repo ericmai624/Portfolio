@@ -16,8 +16,21 @@ export const Section = styled.section.attrs({
 `;
 
 export const Title = styled.h2`
+  position: relative;
   margin: 0;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 700;
+  line-height: 2.5em;
   color: #464646;
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    left: 50%;
+    bottom: 0;
+    width: 25%;
+    transform: translate3d(-50%, 0, 0);
+    border-bottom: 2px solid #ff4e50;
+  }
 `;
