@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 
 import Intro from "src/App/Intro";
+import AdditionalProjects from "src/App/AdditionalProjects";
 import { Mimoji, Justag } from "src/App/Projects";
 import { Title, Section } from "./Styled";
 
@@ -15,7 +16,7 @@ class MainContent extends Component {
         <Section>
           <Intro />
         </Section>
-        <Section style={{ height: "200px", marginBottom: 0 }}>
+        <Section headline>
           <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
@@ -24,20 +25,11 @@ class MainContent extends Component {
         <Section id="justag">
           <Justag />
         </Section>
-        <Section id="justag">
-          <Justag />
+        <Section headline>
+          <Title>PROJECT COMPONENTS</Title>
         </Section>
-        <Section id="justag">
-          <Justag />
-        </Section>
-        <Section id="justag">
-          <Justag />
-        </Section>
-        <Section id="justag">
-          <Justag />
-        </Section>
-        <Section id="justag">
-          <Justag />
+        <Section fluid>
+          <AdditionalProjects />
         </Section>
       </Fragment>
     );

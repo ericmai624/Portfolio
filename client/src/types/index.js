@@ -1,1 +1,2 @@
-export { default as app } from "./app";
+export { default as appType } from "./app";
+export { default as projectsType } from "./projects";

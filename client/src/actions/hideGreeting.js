@@ -1,3 +1,3 @@
-const hideGreeting = () => ({ type: 'HIDE_GREETING' });
+const hideGreeting = () => ({ type: "HIDE_GREETING" });
 
 export default hideGreeting;

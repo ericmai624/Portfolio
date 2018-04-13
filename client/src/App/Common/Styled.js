@@ -7,6 +7,15 @@ export const StyledLink = styled.a`
   text-decoration: none;
 `;
 
+export const StyledButton = styled.button`
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Emoji = styled.span.attrs({
   role: "img",
   "aria-label": "emoji"

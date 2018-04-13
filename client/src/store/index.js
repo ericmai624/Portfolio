@@ -1,12 +1,15 @@
-import { createStore, combineReducers } from "redux";
-// import logger from 'redux-logger';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 
 import app from "./app";
+import projects from "./projects";
 
 const reducer = combineReducers({
-  app
+  app,
+  projects
 });
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 export default store;
