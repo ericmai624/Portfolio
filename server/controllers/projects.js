@@ -3,11 +3,12 @@ const { user, token } = require("config").github;
 
 module.exports.fetch = async (req, res) => {
   const options = {
-    uri: `https://api.github.com/users/${user}/repos`,
+    uri: `https://api.github.com/users/${user ||
+      process.env.GITHUB_USER}/repos`,
     headers: {
       Accept: "application/vnd.github.mercy-preview+json",
       "User-Agent": "request",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token || process.env.GITHUB_TOKEN}`
     },
     qs: {
       sort: "pushed"

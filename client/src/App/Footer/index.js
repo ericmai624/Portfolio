@@ -25,8 +25,8 @@ class Footer extends PureComponent {
     ] = await Promise.all([
       import("@fortawesome/fontawesome"),
       import("@fortawesome/react-fontawesome"),
-      import("@fortawesome/fontawesome-free-brands/faGithub"),
-      import("@fortawesome/fontawesome-free-brands/faLinkedinIn"),
+      import("@fortawesome/fontawesome-free-brands/faGithubSquare"),
+      import("@fortawesome/fontawesome-free-brands/faLinkedin"),
       import("@fortawesome/fontawesome-free-solid/faEnvelope"),
       import("@fortawesome/fontawesome-free-solid/faHeart")
     ]);
@@ -34,8 +34,8 @@ class Footer extends PureComponent {
     fontawesome.library.add(faGithub, faLinkedinIn, faEnvelope, faHeart);
 
     this.setState({
-      github: <FontAwesomeIcon icon={["fab", "github"]} />,
-      linkedin: <FontAwesomeIcon icon={["fab", "linkedin-in"]} />,
+      github: <FontAwesomeIcon icon={["fab", "github-square"]} />,
+      linkedin: <FontAwesomeIcon icon={["fab", "linkedin"]} />,
       email: <FontAwesomeIcon icon={["fas", "envelope"]} />,
       heart: <FontAwesomeIcon icon={["fas", "heart"]} />
     });
