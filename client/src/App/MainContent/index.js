@@ -42,7 +42,7 @@ class MainContent extends Component {
           <MySkills />
         </Section>
         <Section headline>
-          <Title>FEATURED PROJECT: MIMOJI</Title>
+          <Title>FEATURED PROJECT&nbsp;:&nbsp;&nbsp;MIMOJI</Title>
         </Section>
         <Section id="mimoji">
           <Mimoji />

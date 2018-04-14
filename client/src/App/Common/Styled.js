@@ -4,6 +4,7 @@ export const StyledLink = styled.a`
   cursor: pointer;
   outline: none;
   color: inherit;
+  text-align: center;
   text-decoration: none;
 `;
 

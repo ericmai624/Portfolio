@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-const Div = styled.div.attrs({
+const Container = styled(styled.div.attrs({
   className: "row justify-content-center additional-projects"
 })`
   visibility: hidden;
-`;
-
-const Container = styled(Div)`
+  width: 100%;
+`)`
   @media screen and (min-width: 992px) {
     &&& {
       padding: 0 calc(100% / 12);

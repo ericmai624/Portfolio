@@ -9,8 +9,8 @@ import {
   Description,
   TechList,
   Tech,
-  MessageLine,
-  MessageText
+  LinksWrapper,
+  ProjectLinks
 } from "../Styled";
 import { Emoji } from "src/App/Common/Styled";
 
@@ -84,16 +84,16 @@ class Template extends Component {
             </DetailContainer>
           </Container>
         </Wrapper>
-        <MessageLine>
-          <MessageText>Dev process</MessageText>
-          <MessageText
+        <LinksWrapper>
+          <ProjectLinks>Dev process</ProjectLinks>
+          <ProjectLinks
             href={githubURL}
             target="_blank"
             rel="noopener noreferrer"
           >
             Source code
-          </MessageText>
-        </MessageLine>
+          </ProjectLinks>
+        </LinksWrapper>
       </Fragment>
     );
   }

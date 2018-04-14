@@ -8,6 +8,7 @@ import {
   RepoDesc,
   Description,
   GithubLogoContainer,
+  GithubImg,
   ButtonWrapper,
   Button,
   GithubLink
@@ -21,7 +22,7 @@ const ProjectCard = ({ project }) => (
         <RepoDesc>{project.description}</RepoDesc>
       </Description>
       <GithubLogoContainer>
-        <img src="/assets/Octocat.png" alt="github" width="90" />
+        <GithubImg src="/assets/Octocat.png" alt="github" />
       </GithubLogoContainer>
       <ButtonWrapper>
         <Button>

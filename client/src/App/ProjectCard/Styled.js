@@ -1,30 +1,47 @@
 import styled from "styled-components";
 import { StyledLink, StyledButton } from "src/App/Common/Styled";
 
-export const CardContainer = styled.div.attrs({
-  className: "col-6 col-lg-3"
+export const CardContainer = styled(styled.div.attrs({
+  className: "col-12 col-sm-4"
 })`
-  width: 100%;
-  height: 330px;
-  padding: 1em;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+`)`
+  &&& {
+    padding: 0;
+    @media screen and (min-width: 1200px) {
+      padding-top: calc(100% / 12 * 4 * 0.75);
+    }
+    @media screen and (max-width: 1200px) {
+      padding-top: calc(100% / 12 * 4);
+    }
+    @media screen and (max-width: 768px) {
+      padding-top: calc(100% / 12 * 10 * 0.75);
+    }
+    @media screen and (max-width: 576px) {
+      padding-top: calc(100% * 0.5625);
+    }
+  }
 `;
 
 export const InnerWrapper = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  padding: 1em 0;
   align-items: center;
-  padding: 1em;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
-  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  background: rgba(232, 236, 244, 0.5);
 `;
 
 export const Description = styled.div`
   width: 100%;
-  height: 120px;
+  height: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +49,7 @@ export const Description = styled.div`
 
 export const GithubLogoContainer = styled.div`
   width: 100%;
-  height: 130px;
+  height: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +57,7 @@ export const GithubLogoContainer = styled.div`
 
 export const ButtonWrapper = styled.div`
   width: 100%;
-  height: 80px;
+  height: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +71,8 @@ export const RepoName = styled.span`
   text-align: center;
   margin-bottom: 1em;
   color: #1d2328;
+  font-size: 0.85em;
+  font-weight: 600;
 
   &::after {
     content: "";
@@ -73,11 +92,16 @@ export const RepoDesc = styled.span`
   width: 100%;
 `;
 
+export const GithubImg = styled.img`
+  width: auto;
+  max-height: 75%;
+`;
+
 export const Button = StyledButton.extend`
   color: #fff;
-  padding: 0.8em;
-  border-radius: 5px;
-  font-size: 0.9em;
+  padding: 0.7em;
+  border-radius: 3px;
+  font-size: 0.75em;
   background: #1f2b3b;
   transition: all 0.25s ease;
 
