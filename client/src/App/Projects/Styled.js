@@ -10,17 +10,8 @@ export const Wrapper = styled.div.attrs({
 `;
 
 export const Container = styled.div.attrs({
-  className: "col-12 col-lg-10"
+  className: "col-12 col-lg-10 featured-project"
 })`
-  opacity: ${({ displayChrome }) => (displayChrome ? 1 : 0)};
-  transform: translate3d(
-    0,
-    ${({ displayChrome }) => (displayChrome ? 0 : "200px")},
-    0
-  );
-  transition: transform 0.6s ease-out,
-    opacity 0.6s cubic-bezier(0.694, 0, 0.335, 1) 0s;
-
   @media screen and (min-width: 992px) {
     border-radius: 4px;
     overflow-x: hidden;
@@ -72,12 +63,10 @@ export const Tech = styled.span`
 `;
 
 export const MessageLine = styled.div.attrs({
-  className: "row justify-content-center"
+  className: "row justify-content-center featured-project-links"
 })`
-  opacity: ${({ displayLinks }) => (displayLinks ? 1 : 0)};
   margin-top: 100px;
   font-weight: 500;
-  transition: opacity 0.6s cubic-bezier(0.694, 0, 0.335, 1) 0s;
 `;
 
 export const MessageText = StyledLink.extend`

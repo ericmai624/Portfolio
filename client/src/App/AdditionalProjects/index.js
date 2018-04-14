@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -10,14 +10,16 @@ import fetchProjects from "src/actions/fetchProjects";
 
 import { projectsType } from "src/types";
 
-class AdditionalProjects extends Component {
+class AdditionalProjects extends PureComponent {
   static propTypes = {
     projects: PropTypes.shape(projectsType).isRequired,
     fetchProjects: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    this.props.fetchProjects();
+    this.props.fetchProjects().then(() => {
+      window.sr.sync();
+    });
   }
 
   render() {

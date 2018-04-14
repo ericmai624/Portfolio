@@ -10,7 +10,7 @@ module.exports.fetch = async (req, res) => {
       Authorization: `Bearer ${token}`
     },
     qs: {
-      sort: "updated"
+      sort: "pushed"
     }
   };
 

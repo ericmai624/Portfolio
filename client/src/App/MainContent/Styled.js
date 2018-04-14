@@ -23,12 +23,14 @@ export const Section = styled.section.attrs({
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2.attrs({
+  className: "section-title"
+})`
   position: relative;
   margin: 0;
   font-size: 1em;
   font-weight: 700;
-  line-height: 2.5em;
+  line-height: 3em;
   color: #464646;
 
   &::after {

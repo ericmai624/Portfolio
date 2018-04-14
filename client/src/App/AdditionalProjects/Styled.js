@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const Div = styled.div.attrs({
-  className: "row justify-content-center"
-})``;
+  className: "row justify-content-center additional-projects"
+})`
+  visibility: hidden;
+`;
 
 const Container = styled(Div)`
   @media screen and (min-width: 992px) {

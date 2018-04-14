@@ -12,10 +12,9 @@ const fetchProjects = () => async dispatch => {
   try {
     const response = await fetch("/api/projects", options);
     const payload = await response.json();
-    console.log(payload);
-    dispatch({ type: "FETCH_PROJECTS_FULFILLED", payload });
+    return dispatch({ type: "FETCH_PROJECTS_FULFILLED", payload });
   } catch (e) {
-    dispatch({ type: "FETCH_PROJECTS_REJECTED" });
+    return dispatch({ type: "FETCH_PROJECTS_REJECTED" });
   }
 };
 

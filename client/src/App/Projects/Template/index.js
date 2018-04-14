@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import MockChrome from "src/App/MockChrome";
@@ -30,52 +30,17 @@ class Template extends Component {
   };
 
   state = {
-    displayChrome: false,
-    displayLinks: false,
     displayInfo: false
   };
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.fadeInChrome);
-  }
+  componentDidMount() {}
 
-  componentWillUnmount() {
-    this.removeFadeInChromeListener();
-    this.removeFadeInLinksListener();
-  }
-
-  fadeInChrome = () => {
-    const { top } = this.chrome.current.getBoundingClientRect();
-    const threshold = window.innerHeight - 100;
-    if (top <= threshold) {
-      this.setState({ displayChrome: true }, this.removeFadeInChromeListener);
-      window.addEventListener("scroll", this.fadeInLinks);
-    }
-  };
-
-  fadeInLinks = () => {
-    const { top } = this.links.current.getBoundingClientRect();
-    const threshold = window.innerHeight - 50;
-    if (top <= threshold) {
-      this.setState({ displayLinks: true }, this.removeFadeInLinksListener);
-    }
-  };
+  componentWillUnmount() {}
 
   handleHover = () => {
     // const { displayInfo } = this.state;
     // this.setState({ displayInfo: !displayInfo });
   };
-
-  removeFadeInChromeListener = () => {
-    window.removeEventListener("scroll", this.fadeInChrome);
-  };
-
-  removeFadeInLinksListener = () => {
-    window.removeEventListener("scroll", this.fadeInLinks);
-  };
-
-  chrome = createRef(); // Chrome mockups
-  links = createRef(); // parent of links to github or dev process
 
   render() {
     const {
@@ -87,16 +52,14 @@ class Template extends Component {
       techStacks,
       githubURL
     } = this.props;
-    const { displayChrome, displayLinks, displayInfo } = this.state;
+    const { displayInfo } = this.state;
 
     return (
       <Fragment>
         <Wrapper>
           <Container
-            innerRef={this.chrome}
             onMouseEnter={this.handleHover}
             onMouseLeave={this.handleHover}
-            displayChrome={displayChrome}
             style={{ padding: 0 }}
           >
             <MockChrome
@@ -121,7 +84,7 @@ class Template extends Component {
             </DetailContainer>
           </Container>
         </Wrapper>
-        <MessageLine innerRef={this.links} displayLinks={displayLinks}>
+        <MessageLine>
           <MessageText>Dev process</MessageText>
           <MessageText
             href={githubURL}
