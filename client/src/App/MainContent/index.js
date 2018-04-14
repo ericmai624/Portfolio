@@ -4,6 +4,7 @@ import ScrollReveal from "scrollreveal";
 import Intro from "src/App/Intro";
 import MySkills from "src/App/MySkills";
 import AdditionalProjects from "src/App/AdditionalProjects";
+import Footer from "src/App/Footer";
 import { Mimoji } from "src/App/Projects";
 import { Title, Section } from "./Styled";
 
@@ -52,6 +53,7 @@ class MainContent extends Component {
         <Section fluid>
           <AdditionalProjects />
         </Section>
+        <Footer />
       </Fragment>
     );
   }

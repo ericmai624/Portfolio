@@ -1,6 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +61,64 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var head = document.getElementsByTagName('head')[0];
+/******/ 				var script = document.createElement('script');
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".bundle.js";
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				function onScriptComplete(event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -63,6 +156,16 @@
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -104,6 +207,30 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.slowFadeIn = exports.Type = exports.Emoji = exports.StyledButton = exports.StyledLink = undefined;\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar StyledLink = exports.StyledLink = _styledComponents2.default.a.withConfig({\n  displayName: \"Styled__StyledLink\"\n})([\"cursor:pointer;outline:none;color:inherit;text-decoration:none;\"]);\n\nvar StyledButton = exports.StyledButton = _styledComponents2.default.button.withConfig({\n  displayName: \"Styled__StyledButton\"\n})([\"outline:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;\"]);\n\nvar Emoji = exports.Emoji = _styledComponents2.default.span.attrs({\n  role: \"img\",\n  \"aria-label\": \"emoji\"\n}).withConfig({\n  displayName: \"Styled__Emoji\"\n})([\"display:inline-flex;justify-content:center;align-items:center;\"]);\n\nvar Type = exports.Type = (0, _styledComponents.keyframes)([\"50%{border-color:transparent;}\"]);\n\nvar slowFadeIn = exports.slowFadeIn = (0, _styledComponents.keyframes)([\"from{opacity:0;}to{opacity:1;}40%{opacity:0;}100%{opacity:1;}\"]);\n\n//# sourceURL=webpack:///./client/src/App/Common/Styled.js?");
+
+/***/ }),
+
+/***/ "./client/src/App/Footer/Styled.js":
+/*!*****************************************!*\
+  !*** ./client/src/App/Footer/Styled.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.Heart = exports.Copyright = exports.SocialMedia = exports.FooterContainer = undefined;\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar FooterContainer = exports.FooterContainer = _styledComponents2.default.div.attrs({\n  className: \"container\"\n}).withConfig({\n  displayName: \"Styled__FooterContainer\"\n})([\"display:flex;flex-direction:column;align-items:center;\"]);\n\nvar SocialMedia = exports.SocialMedia = _styledComponents2.default.div.attrs({\n  className: \"row justify-content-around align-items-center\"\n}).withConfig({\n  displayName: \"Styled__SocialMedia\"\n})([\"width:200px;font-size:1.5em;\"]);\n\nvar Copyright = exports.Copyright = _styledComponents2.default.div.attrs({\n  className: \"row justify-content-center align-items-center\"\n}).withConfig({\n  displayName: \"Styled__Copyright\"\n})([\"font-size:0.8em;margin:2em 0;\"]);\n\nvar Heart = exports.Heart = _styledComponents2.default.span.withConfig({\n  displayName: \"Styled__Heart\"\n})([\"color:#ff4e50;\"]);\n\n//# sourceURL=webpack:///./client/src/App/Footer/Styled.js?");
+
+/***/ }),
+
+/***/ "./client/src/App/Footer/index.js":
+/*!****************************************!*\
+  !*** ./client/src/App/Footer/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"]) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError(\"Invalid attempt to destructure non-iterable instance\"); } }; }();\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Styled = __webpack_require__(/*! ./Styled */ \"./client/src/App/Footer/Styled.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Footer = function (_PureComponent) {\n  _inherits(Footer, _PureComponent);\n\n  function Footer() {\n    var _ref,\n        _this2 = this;\n\n    var _temp, _this, _ret;\n\n    _classCallCheck(this, Footer);\n\n    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n\n    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Footer.__proto__ || Object.getPrototypeOf(Footer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {\n      github: null,\n      linkedin: null,\n      email: null,\n      heart: null\n    }, _this.dynamicImport = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {\n      var _ref3, _ref4, fontawesome, FontAwesomeIcon, faGithub, faLinkedinIn, faEnvelope, faHeart;\n\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return Promise.all([__webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! @fortawesome/fontawesome */ \"./node_modules/@fortawesome/fontawesome/index.es.js\")), Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! @fortawesome/react-fontawesome */ \"./node_modules/@fortawesome/react-fontawesome/index.es.js\")), __webpack_require__.e(/*! import() */ 1).then(function() { var module = __webpack_require__(/*! @fortawesome/fontawesome-free-brands/faGithub */ \"./node_modules/@fortawesome/fontawesome-free-brands/faGithub.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); }), __webpack_require__.e(/*! import() */ 2).then(function() { var module = __webpack_require__(/*! @fortawesome/fontawesome-free-brands/faLinkedinIn */ \"./node_modules/@fortawesome/fontawesome-free-brands/faLinkedinIn.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); }), __webpack_require__.e(/*! import() */ 3).then(function() { var module = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faEnvelope */ \"./node_modules/@fortawesome/fontawesome-free-solid/faEnvelope.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); }), __webpack_require__.e(/*! import() */ 4).then(function() { var module = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faHeart */ \"./node_modules/@fortawesome/fontawesome-free-solid/faHeart.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); })]);\n\n            case 2:\n              _ref3 = _context.sent;\n              _ref4 = _slicedToArray(_ref3, 6);\n              fontawesome = _ref4[0];\n              FontAwesomeIcon = _ref4[1].default;\n              faGithub = _ref4[2].default;\n              faLinkedinIn = _ref4[3].default;\n              faEnvelope = _ref4[4].default;\n              faHeart = _ref4[5].default;\n\n\n              fontawesome.library.add(faGithub, faLinkedinIn, faEnvelope, faHeart);\n\n              _this.setState({\n                github: _react2.default.createElement(FontAwesomeIcon, { icon: [\"fab\", \"github\"] }),\n                linkedin: _react2.default.createElement(FontAwesomeIcon, { icon: [\"fab\", \"linkedin-in\"] }),\n                email: _react2.default.createElement(FontAwesomeIcon, { icon: [\"fas\", \"envelope\"] }),\n                heart: _react2.default.createElement(FontAwesomeIcon, { icon: [\"fas\", \"heart\"] })\n              });\n\n            case 12:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee, _this2);\n    })), _temp), _possibleConstructorReturn(_this, _ret);\n  }\n\n  _createClass(Footer, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.dynamicImport();\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      var _state = this.state,\n          github = _state.github,\n          linkedin = _state.linkedin,\n          email = _state.email,\n          heart = _state.heart;\n\n\n      return _react2.default.createElement(\n        _Styled.FooterContainer,\n        null,\n        _react2.default.createElement(\n          _Styled.SocialMedia,\n          null,\n          email,\n          github,\n          linkedin\n        ),\n        _react2.default.createElement(\n          _Styled.Copyright,\n          null,\n          _react2.default.createElement(\n            \"span\",\n            null,\n            \"\\xA9 Hand made with\\xA0\"\n          ),\n          _react2.default.createElement(\n            _Styled.Heart,\n            null,\n            heart\n          ),\n          _react2.default.createElement(\n            \"span\",\n            null,\n            \"\\xA0and React + Node.js\"\n          )\n        )\n      );\n    }\n  }]);\n\n  return Footer;\n}(_react.PureComponent);\n\nexports.default = Footer;\n\n//# sourceURL=webpack:///./client/src/App/Footer/index.js?");
 
 /***/ }),
 
@@ -199,7 +326,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _scrollreveal = __webpack_require__(/*! scrollreveal */ \"./node_modules/scrollreveal/dist/scrollreveal.js\");\n\nvar _scrollreveal2 = _interopRequireDefault(_scrollreveal);\n\nvar _Intro = __webpack_require__(/*! src/App/Intro */ \"./client/src/App/Intro/index.js\");\n\nvar _Intro2 = _interopRequireDefault(_Intro);\n\nvar _MySkills = __webpack_require__(/*! src/App/MySkills */ \"./client/src/App/MySkills/index.js\");\n\nvar _MySkills2 = _interopRequireDefault(_MySkills);\n\nvar _AdditionalProjects = __webpack_require__(/*! src/App/AdditionalProjects */ \"./client/src/App/AdditionalProjects/index.js\");\n\nvar _AdditionalProjects2 = _interopRequireDefault(_AdditionalProjects);\n\nvar _Projects = __webpack_require__(/*! src/App/Projects */ \"./client/src/App/Projects/index.js\");\n\nvar _Styled = __webpack_require__(/*! ./Styled */ \"./client/src/App/MainContent/Styled.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar MainContent = function (_Component) {\n  _inherits(MainContent, _Component);\n\n  function MainContent() {\n    var _ref;\n\n    var _temp, _this, _ret;\n\n    _classCallCheck(this, MainContent);\n\n    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n\n    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MainContent.__proto__ || Object.getPrototypeOf(MainContent)).call.apply(_ref, [this].concat(args))), _this), _this.initSrollReveal = function () {\n      window.sr = (0, _scrollreveal2.default)({\n        duration: 600,\n        distance: \"100px\",\n        scale: 1,\n        viewFactor: 1\n      });\n      window.sr.reveal(\".section-title\", { distance: \"24px\" });\n      window.sr.reveal(\".featured-project\", { viewFactor: 0.6 });\n      window.sr.reveal(\".additional-projects\", { viewFactor: 0.2 });\n      window.sr.reveal(\".featured-project-links\", {\n        distance: 0,\n        easing: \"ease-in\"\n      });\n    }, _temp), _possibleConstructorReturn(_this, _ret);\n  }\n\n  _createClass(MainContent, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.initSrollReveal();\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      return _react2.default.createElement(\n        _react.Fragment,\n        null,\n        _react2.default.createElement(\n          _Styled.Section,\n          null,\n          _react2.default.createElement(_Intro2.default, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"MY SKILLS\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { fluid: true },\n          _react2.default.createElement(_MySkills2.default, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"FEATURED PROJECT: MIMOJI\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { id: \"mimoji\" },\n          _react2.default.createElement(_Projects.Mimoji, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"PROJECT COMPONENTS\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { fluid: true },\n          _react2.default.createElement(_AdditionalProjects2.default, null)\n        )\n      );\n    }\n  }]);\n\n  return MainContent;\n}(_react.Component);\n\nexports.default = MainContent;\n\n//# sourceURL=webpack:///./client/src/App/MainContent/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _scrollreveal = __webpack_require__(/*! scrollreveal */ \"./node_modules/scrollreveal/dist/scrollreveal.js\");\n\nvar _scrollreveal2 = _interopRequireDefault(_scrollreveal);\n\nvar _Intro = __webpack_require__(/*! src/App/Intro */ \"./client/src/App/Intro/index.js\");\n\nvar _Intro2 = _interopRequireDefault(_Intro);\n\nvar _MySkills = __webpack_require__(/*! src/App/MySkills */ \"./client/src/App/MySkills/index.js\");\n\nvar _MySkills2 = _interopRequireDefault(_MySkills);\n\nvar _AdditionalProjects = __webpack_require__(/*! src/App/AdditionalProjects */ \"./client/src/App/AdditionalProjects/index.js\");\n\nvar _AdditionalProjects2 = _interopRequireDefault(_AdditionalProjects);\n\nvar _Footer = __webpack_require__(/*! src/App/Footer */ \"./client/src/App/Footer/index.js\");\n\nvar _Footer2 = _interopRequireDefault(_Footer);\n\nvar _Projects = __webpack_require__(/*! src/App/Projects */ \"./client/src/App/Projects/index.js\");\n\nvar _Styled = __webpack_require__(/*! ./Styled */ \"./client/src/App/MainContent/Styled.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar MainContent = function (_Component) {\n  _inherits(MainContent, _Component);\n\n  function MainContent() {\n    var _ref;\n\n    var _temp, _this, _ret;\n\n    _classCallCheck(this, MainContent);\n\n    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n\n    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MainContent.__proto__ || Object.getPrototypeOf(MainContent)).call.apply(_ref, [this].concat(args))), _this), _this.initSrollReveal = function () {\n      window.sr = (0, _scrollreveal2.default)({\n        duration: 600,\n        distance: \"100px\",\n        scale: 1,\n        viewFactor: 1\n      });\n      window.sr.reveal(\".section-title\", { distance: \"24px\" });\n      window.sr.reveal(\".featured-project\", { viewFactor: 0.6 });\n      window.sr.reveal(\".additional-projects\", { viewFactor: 0.2 });\n      window.sr.reveal(\".featured-project-links\", {\n        distance: 0,\n        easing: \"ease-in\"\n      });\n    }, _temp), _possibleConstructorReturn(_this, _ret);\n  }\n\n  _createClass(MainContent, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.initSrollReveal();\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      return _react2.default.createElement(\n        _react.Fragment,\n        null,\n        _react2.default.createElement(\n          _Styled.Section,\n          null,\n          _react2.default.createElement(_Intro2.default, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"MY SKILLS\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { fluid: true },\n          _react2.default.createElement(_MySkills2.default, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"FEATURED PROJECT: MIMOJI\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { id: \"mimoji\" },\n          _react2.default.createElement(_Projects.Mimoji, null)\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { headline: true },\n          _react2.default.createElement(\n            _Styled.Title,\n            null,\n            \"PROJECT COMPONENTS\"\n          )\n        ),\n        _react2.default.createElement(\n          _Styled.Section,\n          { fluid: true },\n          _react2.default.createElement(_AdditionalProjects2.default, null)\n        ),\n        _react2.default.createElement(_Footer2.default, null)\n      );\n    }\n  }]);\n\n  return MainContent;\n}(_react.Component);\n\nexports.default = MainContent;\n\n//# sourceURL=webpack:///./client/src/App/MainContent/index.js?");
 
 /***/ }),
 
