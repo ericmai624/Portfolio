@@ -31,7 +31,7 @@ const ProjectCard = ({ project }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            Check it out!
+            See it on Github
           </GithubLink>
         </Button>
       </ButtonWrapper>

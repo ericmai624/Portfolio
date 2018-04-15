@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { random, range } from "lodash";
 
 import Button from "./Styled";
+import { StyledLink } from "src/App/Common/Styled";
 
 import hideGreeting from "src/actions/hideGreeting";
 
@@ -85,7 +86,7 @@ class More extends PureComponent {
         onMouseLeave={this.handleHover}
         style={{ zIndex: isBlackBg ? -5 : 1 }}
       >
-        {text.split("").map(this.renderWords)}
+        <StyledLink>{text.split("").map(this.renderWords)}</StyledLink>
       </Button>
     );
   }

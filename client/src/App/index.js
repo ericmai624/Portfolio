@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import Greeting from "./Greeting";
 import Layout from "./Layout";
@@ -9,12 +10,17 @@ import ContentWrapper from "./Styled";
 
 import { appType } from "src/types";
 
+import lazyloadFaModules from "src/actions/lazyloadFaModules";
+
 class App extends Component {
   static propTypes = {
-    app: PropTypes.shape(appType).isRequired
+    app: PropTypes.shape(appType).isRequired,
+    lazyloadFaModules: PropTypes.func.isRequired
   };
 
-  state = {};
+  componentDidMount() {
+    this.props.lazyloadFaModules();
+  }
 
   render() {
     const {
@@ -46,4 +52,8 @@ const mapStateToProps = state => ({
   app: state.app
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = dispatch => ({
+  lazyloadFaModules: bindActionCreators(lazyloadFaModules, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
