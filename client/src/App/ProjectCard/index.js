@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import {
   CardContainer,
@@ -8,13 +9,12 @@ import {
   RepoDesc,
   Description,
   GithubLogoContainer,
-  GithubImg,
   ButtonWrapper,
   Button,
   GithubLink
 } from "./Styled";
 
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project, FontAwesomeIcon }) => (
   <CardContainer>
     <InnerWrapper>
       <Description>
@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => (
         <RepoDesc>{project.description}</RepoDesc>
       </Description>
       <GithubLogoContainer>
-        <GithubImg src="/public/assets/Octocat.png" alt="github" />
+        {FontAwesomeIcon ? <FontAwesomeIcon icon={["fab", "github"]} /> : null}
       </GithubLogoContainer>
       <ButtonWrapper>
         <Button>
@@ -40,7 +40,12 @@ const ProjectCard = ({ project }) => (
 );
 
 ProjectCard.propTypes = {
-  project: PropTypes.objectOf(PropTypes.string).isRequired
+  project: PropTypes.objectOf(PropTypes.string).isRequired,
+  FontAwesomeIcon: PropTypes.func.isRequired
 };
 
-export default ProjectCard;
+const mapStateToProps = state => ({
+  FontAwesomeIcon: state.fontawesome.FontAwesomeIcon
+});
+
+export default connect(mapStateToProps, null)(ProjectCard);

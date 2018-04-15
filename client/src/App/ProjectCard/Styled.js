@@ -17,7 +17,7 @@ export const CardContainer = styled(styled.div.attrs({
       padding-top: calc(100% / 12 * 4);
     }
     @media screen and (max-width: 768px) {
-      padding-top: calc(100% / 12 * 10 * 0.75);
+      padding-top: calc(100% / 12 * 8 * 0.75);
     }
     @media screen and (max-width: 576px) {
       padding-top: calc(100% * 0.5625);
@@ -50,6 +50,7 @@ export const Description = styled.div`
 export const GithubLogoContainer = styled.div`
   width: 100%;
   height: 45%;
+  font-size: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,11 +91,6 @@ export const RepoDesc = styled.span`
   color: #575a5c;
   text-align: center;
   width: 100%;
-`;
-
-export const GithubImg = styled.img`
-  width: auto;
-  max-height: 75%;
 `;
 
 export const Button = StyledButton.extend`
