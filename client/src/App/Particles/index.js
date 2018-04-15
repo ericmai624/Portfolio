@@ -6,7 +6,10 @@ import CanvasContainer from "./Styled";
 class Particles extends PureComponent {
   componentDidMount() {
     const { particlesJS } = window;
-    particlesJS.load("particles-js", "particles/particlesjs-config.json");
+    particlesJS.load(
+      "particles-js",
+      "/public/particles/particlesjs-config.json"
+    );
   }
 
   render() {

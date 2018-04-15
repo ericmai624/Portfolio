@@ -1,6 +1,9 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = (env, argv) => {
+  const ASSET_PATH = process.env.ASSET_PATH || "/dist/js/";
+
   const config = {
     entry: [
       "babel-polyfill",
@@ -9,7 +12,8 @@ module.exports = (env, argv) => {
     output: {
       filename: "[name].bundle.js",
       chunkFilename: "[name].bundle.js",
-      path: path.resolve(__dirname, "public", "js")
+      path: path.resolve(__dirname, "dist", "js"),
+      publicPath: ASSET_PATH
     },
     module: {
       rules: [
@@ -38,7 +42,12 @@ module.exports = (env, argv) => {
         util: path.resolve(__dirname, "client", "util"),
         public: path.resolve(__dirname, "public")
       }
-    }
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.ASSET_PATH": JSON.stringify(ASSET_PATH)
+      })
+    ]
   };
 
   if (argv.mode === "production") {

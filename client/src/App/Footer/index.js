@@ -29,12 +29,12 @@ class Footer extends PureComponent {
       { default: faEnvelope },
       { default: faHeart }
     ] = await Promise.all([
-      import("@fortawesome/fontawesome"),
-      import("@fortawesome/react-fontawesome"),
-      import("@fortawesome/fontawesome-free-brands/faGithub"),
-      import("@fortawesome/fontawesome-free-brands/faLinkedinIn"),
-      import("@fortawesome/fontawesome-free-solid/faAt"),
-      import("@fortawesome/fontawesome-free-solid/faHeart")
+      import(/* webpackChunkName: "fontaweome" */ "@fortawesome/fontawesome"),
+      import(/* webpackChunkName: "react-fontawesome" */ "@fortawesome/react-fontawesome"),
+      import(/* webpackChunkName: "fa-github" */ "@fortawesome/fontawesome-free-brands/faGithub"),
+      import(/* webpackChunkName: "fa-linkedin" */ "@fortawesome/fontawesome-free-brands/faLinkedinIn"),
+      import(/* webpackChunkName: "fa-at" */ "@fortawesome/fontawesome-free-solid/faAt"),
+      import(/* webpackChunkName: "fa-heart" */ "@fortawesome/fontawesome-free-solid/faHeart")
     ]);
 
     fontawesome.library.add(faGithub, faLinkedinIn, faEnvelope, faHeart);

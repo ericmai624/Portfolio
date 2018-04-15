@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => (
         <RepoDesc>{project.description}</RepoDesc>
       </Description>
       <GithubLogoContainer>
-        <GithubImg src="/assets/Octocat.png" alt="github" />
+        <GithubImg src="/public/assets/Octocat.png" alt="github" />
       </GithubLogoContainer>
       <ButtonWrapper>
         <Button>

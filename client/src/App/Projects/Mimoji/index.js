@@ -6,7 +6,7 @@ import Template from "../Template";
 const Mimoji = ({ name, summary, description, githubURL, techStacks }) => (
   <Template
     emoji="😺"
-    screenshot="/assets/mimoji.jpg"
+    screenshot="/public/assets/mimoji.jpg"
     name={name}
     summary={summary}
     description={description}

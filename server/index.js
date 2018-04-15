@@ -12,8 +12,8 @@ app.set("view engine", "pug");
 app.use(middleware.bodyParser.json());
 app.use(middleware.bodyParser.urlencoded({ extended: true }));
 app.use(middleware.morgan("common"));
-app.use(express.static(path.join(__dirname, "..", "public")));
-app.use(express.static(path.join(__dirname, "..", "public", "js")));
+app.use("/dist", express.static(path.join(__dirname, "../dist")));
+app.use("/public", express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req, res) => res.render("index.pug"));
 
