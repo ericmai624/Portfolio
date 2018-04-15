@@ -41,6 +41,6 @@ export const Title = styled.h2.attrs({
     bottom: 0;
     width: 25%;
     transform: translate3d(-50%, 0, 0);
-    border-bottom: 2px solid #ff4e50;
+    border-bottom: 2px solid ${({ theme }) => theme.main};
   }
 `;

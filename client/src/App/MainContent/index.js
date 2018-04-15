@@ -5,7 +5,7 @@ import Intro from "src/App/Intro";
 import MySkills from "src/App/MySkills";
 import AdditionalProjects from "src/App/AdditionalProjects";
 import Footer from "src/App/Footer";
-import { Mimoji } from "src/App/Projects";
+import { Mimoji, HelpReactor } from "src/App/Projects";
 import { Title, Section } from "./Styled";
 
 class MainContent extends Component {
@@ -42,10 +42,13 @@ class MainContent extends Component {
           <MySkills />
         </Section>
         <Section headline>
-          <Title>FEATURED PROJECT&nbsp;:&nbsp;&nbsp;MIMOJI</Title>
+          <Title>FEATURED PROJECTS</Title>
         </Section>
         <Section id="mimoji">
           <Mimoji />
+        </Section>
+        <Section id="help-reactor">
+          <HelpReactor />
         </Section>
         <Section headline>
           <Title>PROJECT COMPONENTS</Title>

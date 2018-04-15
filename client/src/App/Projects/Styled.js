@@ -34,16 +34,22 @@ export const DetailContainer = styled.div`
     padding: 0 10%;
     overflow: hidden;
     color: #fff;
-    background: rgba(0, 0, 0, 0.9);
-    transform: ${({ displayInfo }) =>
-      displayInfo ? "translate3d(0, 0, 0)" : "translate3d(100%, 0, 0)"};
-    transition: transform 0.5s ease;
+    background: ${({ theme }) => theme.main};
+    cursor: pointer;
+    opacity: ${({ displayInfo }) => (displayInfo ? 1 : 0)};
+    transition: opacity 0.25s ease;
   }
 `;
 
-export const Description = styled.p`
-  font-weight: 300;
-  line-height: 1.45;
+export const ProjectName = styled.h2`
+  @media screen and (min-width: 992px) {
+    color: #fff;
+    opacity: ${({ displayInfo }) => (displayInfo ? 1 : 0)};
+    transform: ${({ displayInfo }) =>
+      displayInfo ? "translate3d(0, 0, 0)" : "translate3d(-40px, 0, 0)"};
+    transition: opacity 0.25s ease-in,
+      transform 0.5s cubic-bezier(0.694, 0, 0.335, 1);
+  }
 `;
 
 export const TechList = styled.div.attrs({
@@ -59,6 +65,14 @@ export const Tech = styled.span`
   margin: 0 6px 6px 0;
   border: 1px solid #ff4e50;
   color: #ff4e50;
+
+  @media screen and (min-width: 992px) {
+    opacity: ${({ displayInfo }) => (displayInfo ? 1 : 0)};
+    transform: ${({ displayInfo }) =>
+      displayInfo ? "translate3d(0, 0, 0)" : "translate3d(-40px, 0, 0)"};
+    transition: opacity 0.5s ease-in,
+      transform 1s cubic-bezier(0.694, 0, 0.335, 1);
+  }
 `;
 
 export const LinksWrapper = styled.div.attrs({

@@ -102,7 +102,7 @@ export const Button = StyledButton.extend`
   transition: all 0.25s ease;
 
   &:hover {
-    background: #ff4e50;
+    background: ${({ theme }) => theme.main};
     color: #fff;
   }
 `;

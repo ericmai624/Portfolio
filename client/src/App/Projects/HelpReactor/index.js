@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 
 import Template from "../Template";
 
-const Mimoji = ({ name, githubURL, techStacks }) => (
+const HelpReactor = ({ name, githubURL, techStacks }) => (
   <Template
-    emoji="😺"
-    screenshot="/public/assets/mimoji.jpg"
+    screenshot="/public/assets/hr_home.jpg"
     name={name}
     techStacks={techStacks}
     githubURL={githubURL}
@@ -14,13 +13,13 @@ const Mimoji = ({ name, githubURL, techStacks }) => (
   />
 );
 
-Mimoji.propTypes = {
+HelpReactor.propTypes = {
   techStacks: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   githubURL: PropTypes.string
 };
 
-Mimoji.defaultProps = {
+HelpReactor.defaultProps = {
   techStacks: [
     "JavaScript",
     "React",
@@ -28,10 +27,11 @@ Mimoji.defaultProps = {
     "CSS",
     "Node.js",
     "Express",
-    "FFmpeg"
+    "Socket.io",
+    "PostgreSQL"
   ],
-  name: "Mimoji",
-  githubURL: "https://github.com/ericmai624/mimoji-main"
+  name: "Help Reactor",
+  githubURL: "https://github.com/ericmai624/mysolution"
 };
 
-export default Mimoji;
+export default HelpReactor;

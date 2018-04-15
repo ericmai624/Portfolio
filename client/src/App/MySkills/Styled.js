@@ -8,7 +8,7 @@ export const SkillsContainer = styled.div.attrs({
 `;
 
 export const Bracket = styled.span`
-  color: #ff4e50;
+  color: ${({ theme }) => theme.main};
   padding: 0 2em;
   font-weight: 700;
 `;

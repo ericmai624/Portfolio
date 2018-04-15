@@ -6,7 +6,7 @@ import {
   Wrapper,
   Container,
   DetailContainer,
-  Description,
+  ProjectName,
   TechList,
   Tech,
   LinksWrapper,
@@ -16,30 +16,26 @@ import { Emoji } from "src/App/Common/Styled";
 
 class Template extends Component {
   static defaultProps = {
-    emoji: null
+    emoji: null,
+    devProcess: false
   };
 
   static propTypes = {
     emoji: PropTypes.node,
     screenshot: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     techStacks: PropTypes.arrayOf(PropTypes.string).isRequired,
-    githubURL: PropTypes.string.isRequired
+    githubURL: PropTypes.string.isRequired,
+    devProcess: PropTypes.bool
   };
 
   state = {
     displayInfo: false
   };
 
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
   handleHover = () => {
-    // const { displayInfo } = this.state;
-    // this.setState({ displayInfo: !displayInfo });
+    const { displayInfo } = this.state;
+    this.setState({ displayInfo: !displayInfo });
   };
 
   render() {
@@ -47,10 +43,9 @@ class Template extends Component {
       emoji,
       screenshot,
       name,
-      summary,
-      description,
       techStacks,
-      githubURL
+      githubURL,
+      devProcess
     } = this.props;
     const { displayInfo } = this.state;
 
@@ -69,23 +64,25 @@ class Template extends Component {
             />
             <DetailContainer displayInfo={displayInfo}>
               {emoji ? (
-                <h2>
+                <ProjectName displayInfo={displayInfo}>
                   {name}
                   &nbsp;<Emoji>{emoji}</Emoji>
-                </h2>
+                </ProjectName>
               ) : (
-                <h2>{name}</h2>
+                <ProjectName displayInfo={displayInfo}>{name}</ProjectName>
               )}
-              <small>{summary}</small>
-              <Description>{description}</Description>
               <TechList>
-                {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
+                {techStacks.map(ts => (
+                  <Tech key={ts} displayInfo={displayInfo}>
+                    {ts}
+                  </Tech>
+                ))}
               </TechList>
             </DetailContainer>
           </Container>
         </Wrapper>
         <LinksWrapper>
-          <ProjectLinks>Dev process</ProjectLinks>
+          {devProcess ? <ProjectLinks>Dev process</ProjectLinks> : null}
           <ProjectLinks
             href={githubURL}
             target="_blank"

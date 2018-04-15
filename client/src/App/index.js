@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { ThemeProvider } from "styled-components";
 
 import Greeting from "./Greeting";
 import Layout from "./Layout";
@@ -15,7 +16,16 @@ import lazyloadFaModules from "src/actions/lazyloadFaModules";
 class App extends Component {
   static propTypes = {
     app: PropTypes.shape(appType).isRequired,
+    theme: PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
     lazyloadFaModules: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    theme: {
+      main: "#F6470F"
+    }
   };
 
   componentDidMount() {
@@ -24,7 +34,8 @@ class App extends Component {
 
   render() {
     const {
-      app: { fontColor: color, isBlackBg, displayGreeting }
+      app: { fontColor: color, isBlackBg, displayGreeting },
+      theme
     } = this.props;
 
     if (displayGreeting) {
@@ -41,9 +52,11 @@ class App extends Component {
     }
 
     return (
-      <Layout>
-        <MainContent />
-      </Layout>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <MainContent />
+        </Layout>
+      </ThemeProvider>
     );
   }
 }

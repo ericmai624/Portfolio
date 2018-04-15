@@ -51,8 +51,12 @@ const Footer = ({ FontAwesomeIcon }) => {
   );
 };
 
+Footer.defaultProps = {
+  FontAwesomeIcon: null
+};
+
 Footer.propTypes = {
-  FontAwesomeIcon: PropTypes.func.isRequired
+  FontAwesomeIcon: PropTypes.func
 };
 
 const mapStateToProps = state => ({
