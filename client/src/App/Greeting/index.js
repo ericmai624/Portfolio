@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import Msg from "src/App/Msg";
-import Nav from "src/App/Nav";
+import Synopsis from "src/App/Synopsis";
 import More from "src/App/More";
 import { Landing, MsgContainer } from "./Styled";
 
@@ -13,7 +13,7 @@ const Greeting = ({ display }) => (
         <MsgContainer id="greeting">
           <Msg text={"Hi, I'm Eric."} />
         </MsgContainer>
-        <Nav />
+        <Synopsis />
         <More text="MORE" />
       </Landing>
     ) : null}

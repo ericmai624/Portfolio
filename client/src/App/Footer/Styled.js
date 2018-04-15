@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledLink } from "src/App/Common/Styled";
 
 export const FooterContainer = styled.div.attrs({
   className: "container"
@@ -20,6 +21,14 @@ export const Copyright = styled.div.attrs({
 })`
   font-size: 0.8em;
   margin: 2em 0;
+`;
+
+export const SocialMediaLink = StyledLink.extend`
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #ff4e50;
+  }
 `;
 
 export const Heart = styled.span`

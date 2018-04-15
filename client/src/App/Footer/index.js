@@ -1,6 +1,12 @@
 import React, { PureComponent } from "react";
 
-import { FooterContainer, Copyright, SocialMedia, Heart } from "./Styled";
+import {
+  FooterContainer,
+  Copyright,
+  SocialMedia,
+  SocialMediaLink,
+  Heart
+} from "./Styled";
 
 class Footer extends PureComponent {
   state = {
@@ -25,18 +31,18 @@ class Footer extends PureComponent {
     ] = await Promise.all([
       import("@fortawesome/fontawesome"),
       import("@fortawesome/react-fontawesome"),
-      import("@fortawesome/fontawesome-free-brands/faGithubSquare"),
-      import("@fortawesome/fontawesome-free-brands/faLinkedin"),
-      import("@fortawesome/fontawesome-free-solid/faEnvelope"),
+      import("@fortawesome/fontawesome-free-brands/faGithub"),
+      import("@fortawesome/fontawesome-free-brands/faLinkedinIn"),
+      import("@fortawesome/fontawesome-free-solid/faAt"),
       import("@fortawesome/fontawesome-free-solid/faHeart")
     ]);
 
     fontawesome.library.add(faGithub, faLinkedinIn, faEnvelope, faHeart);
 
     this.setState({
-      github: <FontAwesomeIcon icon={["fab", "github-square"]} />,
-      linkedin: <FontAwesomeIcon icon={["fab", "linkedin"]} />,
-      email: <FontAwesomeIcon icon={["fas", "envelope"]} />,
+      github: <FontAwesomeIcon icon={["fab", "github"]} />,
+      linkedin: <FontAwesomeIcon icon={["fab", "linkedin-in"]} />,
+      email: <FontAwesomeIcon icon={["fas", "at"]} />,
       heart: <FontAwesomeIcon icon={["fas", "heart"]} />
     });
   };
@@ -47,9 +53,23 @@ class Footer extends PureComponent {
     return (
       <FooterContainer>
         <SocialMedia>
-          {email}
-          {github}
-          {linkedin}
+          <SocialMediaLink href="mailto:ericmak624@gmail.com">
+            {email}
+          </SocialMediaLink>
+          <SocialMediaLink
+            href="https://github.com/ericmai624"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {github}
+          </SocialMediaLink>
+          <SocialMediaLink
+            href="https://www.linkedin.com/in/eric-mai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {linkedin}
+          </SocialMediaLink>
         </SocialMedia>
         <Copyright>
           <span>© Hand made with&nbsp;</span>
