@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -9,6 +9,7 @@ import Greeting from "./Greeting";
 import Layout from "./Layout";
 import MainContent from "./MainContent";
 import DevProcess from "./DevProcess";
+import ScrollToTop from "./ScrollToTop";
 import ContentWrapper from "./Styled";
 
 import { appType } from "src/types";
@@ -57,10 +58,10 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <Layout>
-            <Fragment>
+            <ScrollToTop>
               <Route exact path="/" component={MainContent} />
               <Route path="/dev/:project" component={DevProcess} />
-            </Fragment>
+            </ScrollToTop>
           </Layout>
         </ThemeProvider>
       </Router>

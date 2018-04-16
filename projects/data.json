@@ -1,0 +1,40 @@
+{
+  "mimoji": {
+    "overview":
+      "Mimoji allows you to play your local videos on TV via Chromecast or directly on your browser",
+    "problem": "",
+    "userStories": [],
+    "wireframes": [],
+    "challenges": "",
+    "techStacks": []
+  },
+
+  "justag": {
+    "overview": "",
+    "problem": "",
+    "userStories": [],
+    "wireframes": [],
+    "challenges": "",
+    "techStacks": []
+  },
+
+  "help_desk_v2.0": {
+    "overview": "",
+    "problem": "",
+    "userStories": [
+      "As a user, I expect to see how long the wait is",
+      "As a user, I expect to see how many people are waiting for help"
+    ],
+    "wireframes": [
+      "/public/assets/hdv2/1.jpg",
+      "/public/assets/hdv2/2.jpg",
+      "/public/assets/hdv2/3.jpg",
+      "/public/assets/hdv2/4.jpg",
+      "/public/assets/hdv2/5.jpg",
+      "/public/assets/hdv2/6.jpg",
+      "/public/assets/hdv2/7.jpg"
+    ],
+    "challenges": "",
+    "techStacks": []
+  }
+}

@@ -19,6 +19,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/no-array-index-key": 0,
     "jsx-a11y/anchor-is-valid": 0,
+    "no-shadow": 0,
     /* Prettier auto format will take care the following */
     "max-len": 0,
     "jsx-a11y/accessible-emoji": 0,

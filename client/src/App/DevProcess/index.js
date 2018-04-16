@@ -1,26 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
-import { Container } from "./Styled";
+import MimojiDev from "./MimojiDev";
+import JustagDev from "./JustagDev";
+import HelpDeskDev from "./HelpDeskDev";
 
-class DevProcess extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
+const DevProcess = ({ location }) => {
+  const { pathname } = location;
+  const project = pathname.replace("/dev/", "");
 
-  state = {};
-
-  componentDidMount() {}
-
-  render() {
-    const { match, location, history } = this.props;
-
-    console.log(match, location);
-    return <Container>dev</Container>;
+  switch (project) {
+    case "mimoji":
+      return <MimojiDev />;
+    case "justag":
+      return <JustagDev />;
+    case "help_desk_v2.0":
+      return <HelpDeskDev />;
+    default:
+      return null;
   }
-}
+};
+
+DevProcess.propTypes = {
+  /* eslint-disable */
+  location: PropTypes.object.isRequired
+};
 
 export default withRouter(DevProcess);

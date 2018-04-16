@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Motion, spring } from "react-motion";
 
+import Footer from "src/App/Footer";
 import Particles from "src/App/Particles";
 import Container from "./Styled";
 
@@ -12,7 +13,10 @@ const Layout = ({ children }) => (
   >
     {({ opacity }) => (
       <Fragment>
-        <Container style={{ opacity }}>{children}</Container>
+        <Container style={{ opacity }}>
+          {children}
+          <Footer />
+        </Container>
         <Particles />
       </Fragment>
     )}
