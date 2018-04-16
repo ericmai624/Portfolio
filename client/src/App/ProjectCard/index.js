@@ -39,9 +39,13 @@ const ProjectCard = ({ project, FontAwesomeIcon }) => (
   </CardContainer>
 );
 
+ProjectCard.defaultProps = {
+  FontAwesomeIcon: null
+};
+
 ProjectCard.propTypes = {
   project: PropTypes.objectOf(PropTypes.string).isRequired,
-  FontAwesomeIcon: PropTypes.func.isRequired
+  FontAwesomeIcon: PropTypes.func
 };
 
 const mapStateToProps = state => ({

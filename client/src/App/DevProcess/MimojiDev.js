@@ -2,13 +2,62 @@ import React from "react";
 
 import Template from "./Template";
 import MockChrome from "src/App/MockChrome";
-import { Section, WireframeImg, WireframeImgWrapper } from "./Styled";
+import {
+  Section,
+  StoriesList,
+  StoriesItem,
+  WireframeImg,
+  WireframeImgWrapper,
+  PlanningFig
+} from "./Styled";
 
 const MimojiDev = () => {
-  const stories = <div>story</div>;
+  const stories = (
+    <StoriesList>
+      <StoriesItem>
+        As a user, I expect to play videos on my TV or browser without delays or
+        interruptions
+      </StoriesItem>
+      <StoriesItem>
+        As a user, I expect to play different video formats without problems
+      </StoriesItem>
+      <StoriesItem>
+        As a user, I expect to choose videos in an intuitive way
+      </StoriesItem>
+      <StoriesItem>
+        As a user, I expect to pause, play, and control volumes easily
+      </StoriesItem>
+      <StoriesItem>
+        As a user, I expect to be able to seek to a point anytime during
+        playback
+      </StoriesItem>
+      <StoriesItem>
+        As a user, I expect video, sound, and text tracks to be in sync
+      </StoriesItem>
+    </StoriesList>
+  );
 
   const planning = (
     <Section>
+      <h4>Routes and sequences</h4>
+      <PlanningFig>
+        <WireframeImg
+          src="/public/assets/wireframes/mimoji/m_p1.jpg"
+          alt="m_p1"
+        />
+      </PlanningFig>
+      <PlanningFig>
+        <WireframeImg
+          src="/public/assets/wireframes/mimoji/m_p2.jpg"
+          alt="m_p1"
+        />
+      </PlanningFig>
+      <PlanningFig>
+        <WireframeImg
+          src="/public/assets/wireframes/mimoji/m_p3.jpg"
+          alt="m_p1"
+        />
+      </PlanningFig>
       <h4>Main page</h4>
       <div className="row">
         <WireframeImgWrapper>
@@ -60,8 +109,6 @@ const MimojiDev = () => {
     </Section>
   );
 
-  const techStacks = <div>tech</div>;
-
   return (
     <Template
       overview={
@@ -75,7 +122,7 @@ const MimojiDev = () => {
       challenges="The first challenge of this project is how to start. As the sole owner of this project, I need to validate ideas of different ways to tackle this problem.  Nothing good comes easily, many other challenges arose during the development process. For example, compatibilities among different generations of Chromecast and browsers; different file systems and process management on Mac and Windows; and the core problem - convert a video of any size and any format to a Chromecast or browser-supported format with the best picture quality on the fly."
       stories={stories}
       planning={planning}
-      techStacks={techStacks}
+      techStacks={["js", "react", "html5", "css3", "node"]}
     />
   );
 };

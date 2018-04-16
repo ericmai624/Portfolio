@@ -5,18 +5,16 @@ import Template from "./Template";
 const JustagDev = () => {
   const stories = <div>story</div>;
 
-  const wireframe = <div>wire</div>;
-
-  const techStacks = <div>tech</div>;
+  const planning = <div>wire</div>;
 
   return (
     <Template
       overview="justag overview"
       problem="mimoji problem"
       stories={stories}
-      wireframe={wireframe}
+      planning={planning}
       challenges="some challenges"
-      techStacks={techStacks}
+      techStacks={["js", "html5", "css3", "angular", "node"]}
     />
   );
 };

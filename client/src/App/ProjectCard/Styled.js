@@ -11,16 +11,19 @@ export const CardContainer = styled(styled.div.attrs({
   &&& {
     padding: 0;
     @media screen and (min-width: 1200px) {
-      padding-top: calc(100% / 12 * 4 * 0.75);
+      padding-top: calc(920px / 4);
     }
     @media screen and (max-width: 1200px) {
-      padding-top: calc(100% / 12 * 4);
+      padding-top: calc(770px / 3);
+    }
+    @media screen and (max-width: 992px) {
+      padding-top: calc(570px / 2 * 0.75);
     }
     @media screen and (max-width: 768px) {
-      padding-top: calc(100% / 12 * 8 * 0.75);
+      padding-top: calc(420px / 12 * 8 * 0.75);
     }
     @media screen and (max-width: 576px) {
-      padding-top: calc(100% * 0.5625);
+      padding-top: calc((100vw - 30px) * 0.5625);
     }
   }
 `;

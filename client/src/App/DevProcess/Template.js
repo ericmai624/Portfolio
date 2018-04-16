@@ -2,7 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { Container, Back, SectionTitle, Section, Description } from "./Styled";
+import {
+  Container,
+  Back,
+  SectionTitle,
+  Section,
+  Description,
+  TechStackWrapper
+} from "./Styled";
 
 const Template = ({
   overview,
@@ -37,7 +44,16 @@ const Template = ({
     <SectionTitle>Planning</SectionTitle>
     {planning}
     <SectionTitle>Tech stacks</SectionTitle>
-    <Section>{techStacks}</Section>
+    <Section>
+      {FontAwesomeIcon
+        ? techStacks.map(ts => (
+            /* eslint-disable react/jsx-indent */
+            <TechStackWrapper key={ts}>
+              <FontAwesomeIcon icon={["fab", ts]} />
+            </TechStackWrapper>
+          ))
+        : null}
+    </Section>
   </Container>
 );
 
@@ -51,7 +67,7 @@ Template.propTypes = {
   stories: PropTypes.node.isRequired,
   planning: PropTypes.node.isRequired,
   challenges: PropTypes.string.isRequired,
-  techStacks: PropTypes.node.isRequired,
+  techStacks: PropTypes.arrayOf(PropTypes.string).isRequired,
   FontAwesomeIcon: PropTypes.func
 };
 

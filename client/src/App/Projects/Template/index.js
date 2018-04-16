@@ -69,7 +69,7 @@ class Template extends Component {
             onMouseLeave={this.handleHover}
             style={{ padding: 0 }}
           >
-            {innerWidth < 992 ? (
+            {devProcess && innerWidth < 992 ? (
               <NoStyleLink to={`/dev/${name.toLowerCase()}`}>
                 <MockChrome imgSrc={screenshot} project={name} />
               </NoStyleLink>
@@ -82,6 +82,7 @@ class Template extends Component {
               techStacks={techStacks}
               innerWidth={innerWidth}
               displayInfo={displayInfo}
+              devProcess={devProcess}
             />
           </Container>
         </Wrapper>

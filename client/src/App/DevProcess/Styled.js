@@ -41,7 +41,7 @@ export const SectionTitle = styled.div.attrs({
   color: #000;
 
   &:first-of-type {
-    margin-top: 200px;
+    margin-top: 50px;
   }
 `;
 
@@ -60,7 +60,31 @@ export const WireframeImg = styled.img`
 `;
 
 export const WireframeImgWrapper = styled.div.attrs({
-  className: "col-12 col-md-6"
+  className: "col-12 col-lg-6"
 })`
   padding: 10px 0;
+`;
+
+export const PlanningFig = styled.figure`
+  border: 1px solid #e3e3e3;
+  margin: 10px 0;
+
+  @media screen and (min-width: 768px) {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+`;
+
+export const StoriesList = styled.ul`
+  padding-left: 18px;
+`;
+
+export const StoriesItem = styled.li`
+  margin: 15px 0;
+`;
+
+export const TechStackWrapper = styled.span`
+  margin-right: 1em;
+  font-size: 3em;
+  color: #000;
 `;

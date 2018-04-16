@@ -36,7 +36,7 @@ export const DescrWrapper = styled.div`
     overflow: hidden;
     color: #fff;
     background: ${({ theme }) => theme.main};
-    cursor: pointer;
+    cursor: ${({ devProcess }) => (devProcess ? "pointer" : "unset")};
     opacity: ${({ displayInfo }) => (displayInfo ? 1 : 0)};
     transition: opacity 0.25s ease;
   }

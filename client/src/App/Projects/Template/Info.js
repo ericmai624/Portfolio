@@ -17,12 +17,13 @@ const Info = ({
   emoji,
   name,
   techStacks,
+  devProcess,
   FontAwesomeIcon
 }) => (
   <Fragment>
-    {innerWidth >= 992 ? (
+    {devProcess && innerWidth >= 992 ? (
       <NoStyleLink to={`/dev/${name.toLowerCase()}`}>
-        <DescrWrapper displayInfo={displayInfo}>
+        <DescrWrapper displayInfo={displayInfo} devProcess={devProcess}>
           {emoji ? (
             <ProjectName displayInfo={displayInfo}>
               {name.replace(/_/g, " ")}
@@ -74,11 +75,13 @@ Info.propTypes = {
   techStacks: PropTypes.arrayOf(PropTypes.string).isRequired,
   displayInfo: PropTypes.bool.isRequired,
   emoji: PropTypes.node,
+  devProcess: PropTypes.bool,
   FontAwesomeIcon: PropTypes.func
 };
 
 Info.defaultProps = {
   emoji: null,
+  devProcess: null,
   FontAwesomeIcon: null
 };
 

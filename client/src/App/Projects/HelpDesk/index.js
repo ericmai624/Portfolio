@@ -9,7 +9,6 @@ const HelpDesk = ({ name, githubURL, techStacks }) => (
     name={name}
     techStacks={techStacks}
     githubURL={githubURL}
-    devProcess
   />
 );
 
