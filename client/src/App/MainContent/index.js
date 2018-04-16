@@ -5,8 +5,8 @@ import Intro from "src/App/Intro";
 import MySkills from "src/App/MySkills";
 import AdditionalProjects from "src/App/AdditionalProjects";
 import Footer from "src/App/Footer";
-import { Mimoji, HelpReactor } from "src/App/Projects";
-import { Title, Section } from "./Styled";
+import { Mimoji, Justag, HelpDesk } from "src/App/Projects";
+import { Title, Section, TitleWrapper } from "./Styled";
 
 class MainContent extends Component {
   componentDidMount() {
@@ -35,24 +35,27 @@ class MainContent extends Component {
         <Section>
           <Intro />
         </Section>
-        <Section headline>
+        <TitleWrapper>
           <Title>MY SKILLS</Title>
-        </Section>
+        </TitleWrapper>
         <Section fluid>
           <MySkills />
         </Section>
-        <Section headline>
+        <TitleWrapper>
           <Title>FEATURED PROJECTS</Title>
-        </Section>
+        </TitleWrapper>
         <Section id="mimoji">
           <Mimoji />
         </Section>
+        <Section id="justag">
+          <Justag />
+        </Section>
         <Section id="help-reactor">
-          <HelpReactor />
+          <HelpDesk />
         </Section>
-        <Section headline>
+        <TitleWrapper>
           <Title>PROJECT COMPONENTS</Title>
-        </Section>
+        </TitleWrapper>
         <Section fluid>
           <AdditionalProjects />
         </Section>

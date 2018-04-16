@@ -1,23 +1,27 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import MockChrome from "src/App/MockChrome";
 import {
   Wrapper,
   Container,
-  DetailContainer,
+  DescrWrapper,
   ProjectName,
-  TechList,
+  TechStacks,
   Tech,
   LinksWrapper,
-  ProjectLinks
+  ProjectLinks,
+  DevProcessLink
 } from "../Styled";
 import { Emoji } from "src/App/Common/Styled";
 
 class Template extends Component {
   static defaultProps = {
     emoji: null,
-    devProcess: false
+    devProcess: false,
+    FontAwesomeIcon: null
   };
 
   static propTypes = {
@@ -26,7 +30,8 @@ class Template extends Component {
     name: PropTypes.string.isRequired,
     techStacks: PropTypes.arrayOf(PropTypes.string).isRequired,
     githubURL: PropTypes.string.isRequired,
-    devProcess: PropTypes.bool
+    devProcess: PropTypes.bool,
+    FontAwesomeIcon: PropTypes.func
   };
 
   state = {
@@ -45,7 +50,8 @@ class Template extends Component {
       name,
       techStacks,
       githubURL,
-      devProcess
+      devProcess,
+      FontAwesomeIcon
     } = this.props;
     const { displayInfo } = this.state;
 
@@ -62,27 +68,36 @@ class Template extends Component {
               project={name}
               displayInfo={displayInfo}
             />
-            <DetailContainer displayInfo={displayInfo}>
-              {emoji ? (
-                <ProjectName displayInfo={displayInfo}>
-                  {name}
-                  &nbsp;<Emoji>{emoji}</Emoji>
-                </ProjectName>
-              ) : (
-                <ProjectName displayInfo={displayInfo}>{name}</ProjectName>
-              )}
-              <TechList>
-                {techStacks.map(ts => (
-                  <Tech key={ts} displayInfo={displayInfo}>
-                    {ts}
-                  </Tech>
-                ))}
-              </TechList>
-            </DetailContainer>
+            <Link to={`/dev/${name.toLowerCase()}`}>
+              <DescrWrapper displayInfo={displayInfo}>
+                {emoji ? (
+                  <ProjectName displayInfo={displayInfo}>
+                    {name.replace(/_/g, " ")}
+                    &nbsp;<Emoji>{emoji}</Emoji>
+                  </ProjectName>
+                ) : (
+                  <ProjectName displayInfo={displayInfo}>
+                    {name.replace(/_/g, " ")}
+                  </ProjectName>
+                )}
+                {FontAwesomeIcon ? (
+                  <TechStacks displayInfo={displayInfo}>
+                    Made with&nbsp;<FontAwesomeIcon icon={["fas", "heart"]} />&nbsp;and
+                  </TechStacks>
+                ) : null}
+                <TechStacks displayInfo={displayInfo}>
+                  {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
+                </TechStacks>
+              </DescrWrapper>
+            </Link>
           </Container>
         </Wrapper>
         <LinksWrapper>
-          {devProcess ? <ProjectLinks>Dev process</ProjectLinks> : null}
+          {devProcess ? (
+            <DevProcessLink to={`/dev/${name.toLowerCase()}`}>
+              Dev process
+            </DevProcessLink>
+          ) : null}
           <ProjectLinks
             href={githubURL}
             target="_blank"
@@ -96,4 +111,8 @@ class Template extends Component {
   }
 }
 
-export default Template;
+const mapStateToProps = state => ({
+  FontAwesomeIcon: state.fontawesome.FontAwesomeIcon
+});
+
+export default connect(mapStateToProps, null)(Template);

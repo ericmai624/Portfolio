@@ -12,9 +12,7 @@ const Layout = ({ children }) => (
   >
     {({ opacity }) => (
       <Fragment>
-        <Container id="layout" style={{ opacity }}>
-          {children}
-        </Container>
+        <Container style={{ opacity }}>{children}</Container>
         <Particles />
       </Fragment>
     )}

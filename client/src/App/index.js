@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Greeting from "./Greeting";
 import Layout from "./Layout";
 import MainContent from "./MainContent";
+import DevProcess from "./DevProcess";
 import ContentWrapper from "./Styled";
 
 import { appType } from "src/types";
@@ -52,11 +54,16 @@ class App extends Component {
     }
 
     return (
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <MainContent />
-        </Layout>
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Fragment>
+              <Route exact path="/" component={MainContent} />
+              <Route path="/dev/:project" component={DevProcess} />
+            </Fragment>
+          </Layout>
+        </ThemeProvider>
+      </Router>
     );
   }
 }

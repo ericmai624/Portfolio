@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-const getHeight = (isFluid, isHeadline) => {
-  if (isHeadline) {
-    return "200px";
-  }
-
-  return isFluid ? "auto" : "100%";
-};
-
 export const Section = styled.section.attrs({
   className: "container"
 })`
@@ -15,12 +7,21 @@ export const Section = styled.section.attrs({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: ${({ fluid, headline }) => getHeight(fluid, headline)};
-  margin-bottom: ${({ headline }) => (headline ? 0 : "200px")};
+  height: ${({ fluid }) => (fluid ? "auto" : "100%")};
+  margin-bottom: 200px;
 
   &:first-of-type {
     margin-bottom: 0;
   }
+`;
+
+export const TitleWrapper = styled.div.attrs({
+  className: "container"
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
 `;
 
 export const Title = styled.h2.attrs({

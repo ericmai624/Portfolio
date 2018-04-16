@@ -16,6 +16,7 @@ app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use("/public", express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req, res) => res.render("index.pug"));
+app.get("/dev/:project", (req, res) => res.render("index.pug"));
 
 // data endpoints
 app.use("/api/projects", routes.projects);

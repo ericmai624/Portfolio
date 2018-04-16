@@ -3,22 +3,19 @@ import PropTypes from "prop-types";
 
 import Template from "../Template";
 
-const Justag = ({ name, summary, description, githubURL, techStacks }) => (
+const Justag = ({ name, githubURL, techStacks }) => (
   <Template
-    screenshot="/assets/jt_macbook.jpg"
+    screenshot="/public/assets/jt_macbook.jpg"
     name={name}
-    summary={summary}
-    description={description}
     techStacks={techStacks}
     githubURL={githubURL}
+    devProcess
   />
 );
 
 Justag.propTypes = {
   techStacks: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
-  summary: PropTypes.string,
-  description: PropTypes.string,
   githubURL: PropTypes.string
 };
 
@@ -33,11 +30,6 @@ Justag.defaultProps = {
     "MongoDB"
   ],
   name: "Justag",
-  summary: "Just another movie rating app",
-  description:
-    "Justag is a simple application built on React and Node.js to fetch " +
-    "and scrape movie ratings from multiple sources.Development focused " +
-    "on concurrency and code reusability.",
   githubURL: "https://github.com/ericmai624/justag"
 };
 

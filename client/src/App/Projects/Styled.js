@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledLink } from "src/App/Common/Styled";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div.attrs({
   className: "row justify-content-center"
@@ -19,7 +20,7 @@ export const Container = styled.div.attrs({
   }
 `;
 
-export const DetailContainer = styled.div`
+export const DescrWrapper = styled.div`
   width: 100%;
 
   @media screen and (min-width: 992px) {
@@ -52,26 +53,32 @@ export const ProjectName = styled.h2`
   }
 `;
 
-export const TechList = styled.div.attrs({
+export const TechStacks = styled.div.attrs({
   className: "row"
 })`
   display: flex;
-  padding: 0 15px;
+  padding: 0.5em 15px;
   font-size: 0.8em;
-`;
-
-export const Tech = styled.span`
-  padding: 2px 5px;
-  margin: 0 6px 6px 0;
-  border: 1px solid #ff4e50;
-  color: #ff4e50;
+  color: ${({ theme }) => theme.main};
 
   @media screen and (min-width: 992px) {
+    color: #fff;
     opacity: ${({ displayInfo }) => (displayInfo ? 1 : 0)};
     transform: ${({ displayInfo }) =>
       displayInfo ? "translate3d(0, 0, 0)" : "translate3d(-40px, 0, 0)"};
     transition: opacity 0.5s ease-in,
       transform 1s cubic-bezier(0.694, 0, 0.335, 1);
+  }
+`;
+
+export const Tech = styled.span`
+  padding: 2px 5px;
+  margin: 0 6px 6px 0;
+  color: inherit;
+  border: 1px solid ${({ theme }) => theme.main};
+
+  @media screen and (min-width: 992px) {
+    border: 1px solid #fff;
   }
 `;
 
@@ -91,5 +98,23 @@ export const ProjectLinks = StyledLink.extend`
 
   &:hover {
     border-bottom: 3px solid #000;
+    cursor: pointer;
+  }
+`;
+
+export const DevProcessLink = styled(Link)`
+  padding: 5px 0;
+  border-bottom: 3px solid transparent;
+  transition: border 0.25s ease;
+  margin: 0 2em;
+  cursor: pointer;
+  outline: none;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: 3px solid #000;
+    cursor: pointer;
   }
 `;

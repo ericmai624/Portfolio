@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Template from "../Template";
 
-const HelpReactor = ({ name, githubURL, techStacks }) => (
+const HelpDesk = ({ name, githubURL, techStacks }) => (
   <Template
     screenshot="/public/assets/hr_home.jpg"
     name={name}
@@ -13,13 +13,13 @@ const HelpReactor = ({ name, githubURL, techStacks }) => (
   />
 );
 
-HelpReactor.propTypes = {
+HelpDesk.propTypes = {
   techStacks: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   githubURL: PropTypes.string
 };
 
-HelpReactor.defaultProps = {
+HelpDesk.defaultProps = {
   techStacks: [
     "JavaScript",
     "React",
@@ -30,8 +30,8 @@ HelpReactor.defaultProps = {
     "Socket.io",
     "PostgreSQL"
   ],
-  name: "Help Reactor",
+  name: "Help_Desk_v2.0",
   githubURL: "https://github.com/ericmai624/mysolution"
 };
 
-export default HelpReactor;
+export default HelpDesk;
