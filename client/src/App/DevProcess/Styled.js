@@ -35,7 +35,7 @@ export const SectionTitle = styled.div.attrs({
   className: "row"
 })`
   width: 100%;
-  padding: 15px;
+  padding: 30px 15px 0 15px;
   font-size: 1.5em;
   font-weight: 500;
   color: #000;
@@ -50,4 +50,17 @@ export const Section = styled.section`
   padding: 15px;
 `;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+  line-height: 1.8;
+  font-size: 1.1em;
+`;
+
+export const WireframeImg = styled.img`
+  width: 100%;
+`;
+
+export const WireframeImgWrapper = styled.div.attrs({
+  className: "col-12 col-md-6"
+})`
+  padding: 10px 0;
+`;

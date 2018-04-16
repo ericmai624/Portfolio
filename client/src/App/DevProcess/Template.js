@@ -8,7 +8,7 @@ const Template = ({
   overview,
   problem,
   stories,
-  wireframe,
+  planning,
   challenges,
   techStacks,
   FontAwesomeIcon
@@ -28,14 +28,14 @@ const Template = ({
     <Section>
       <Description>{problem}</Description>
     </Section>
-    <SectionTitle>User stories</SectionTitle>
-    <Section>{stories}</Section>
-    <SectionTitle>Wireframes</SectionTitle>
-    <Section>{wireframe}</Section>
     <SectionTitle>Challenges</SectionTitle>
     <Section>
       <Description>{challenges}</Description>
     </Section>
+    <SectionTitle>User stories</SectionTitle>
+    <Section>{stories}</Section>
+    <SectionTitle>Planning</SectionTitle>
+    {planning}
     <SectionTitle>Tech stacks</SectionTitle>
     <Section>{techStacks}</Section>
   </Container>
@@ -49,7 +49,7 @@ Template.propTypes = {
   overview: PropTypes.string.isRequired,
   problem: PropTypes.string.isRequired,
   stories: PropTypes.node.isRequired,
-  wireframe: PropTypes.node.isRequired,
+  planning: PropTypes.node.isRequired,
   challenges: PropTypes.string.isRequired,
   techStacks: PropTypes.node.isRequired,
   FontAwesomeIcon: PropTypes.func

@@ -8,7 +8,6 @@ const Container = styled.div`
   height: 100%;
   z-index: 1;
   font-family: "Lato", sans-serif;
-  opacity: 0;
 
   & section {
     user-select: text;

@@ -118,3 +118,10 @@ export const DevProcessLink = styled(Link)`
     cursor: pointer;
   }
 `;
+
+export const NoStyleLink = styled(Link)`
+  outline: none;
+  text-decoration: none;
+  corlor: inherit;
+  cursor: pointer;
+`;

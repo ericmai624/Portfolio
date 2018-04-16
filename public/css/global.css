@@ -7,3 +7,30 @@
   color: #fff;
   background: #38f9d7;
 }
+
+.route-appear {
+  opacity: 0;
+}
+
+.route-appear.route-appear-active {
+  opacity: 1;
+  transition: opacity 0.8s ease-in;
+}
+
+.route-enter {
+  opacity: 0;
+}
+
+.route-enter.route-enter-active {
+  opacity: 1;
+  transition: opacity 0.8s ease-in;
+}
+
+.route-exit {
+  opacity: 1;
+}
+
+.route-exit.route-exit-active {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}

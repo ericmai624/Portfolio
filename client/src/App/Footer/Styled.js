@@ -7,6 +7,7 @@ export const FooterContainer = styled.div.attrs({
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2em 15px;
 `;
 
 export const SocialMedia = styled.div.attrs({
@@ -20,7 +21,7 @@ export const Copyright = styled.div.attrs({
   className: "row justify-content-center align-items-center"
 })`
   font-size: 0.8em;
-  margin: 2em 0;
+  margin-top: 2em;
 `;
 
 export const SocialMediaLink = StyledLink.extend`

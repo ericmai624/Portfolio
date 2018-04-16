@@ -1,27 +1,21 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import MockChrome from "src/App/MockChrome";
+import Info from "./Info";
 import {
   Wrapper,
   Container,
-  DescrWrapper,
-  ProjectName,
-  TechStacks,
-  Tech,
   LinksWrapper,
   ProjectLinks,
-  DevProcessLink
+  DevProcessLink,
+  NoStyleLink
 } from "../Styled";
-import { Emoji } from "src/App/Common/Styled";
 
 class Template extends Component {
   static defaultProps = {
     emoji: null,
-    devProcess: false,
-    FontAwesomeIcon: null
+    devProcess: false
   };
 
   static propTypes = {
@@ -30,12 +24,25 @@ class Template extends Component {
     name: PropTypes.string.isRequired,
     techStacks: PropTypes.arrayOf(PropTypes.string).isRequired,
     githubURL: PropTypes.string.isRequired,
-    devProcess: PropTypes.bool,
-    FontAwesomeIcon: PropTypes.func
+    devProcess: PropTypes.bool
   };
 
   state = {
-    displayInfo: false
+    displayInfo: false,
+    innerWidth: window.innerWidth
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.getWindowWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.getWindowWidth);
+  }
+
+  getWindowWidth = () => {
+    const { innerWidth } = window;
+    this.setState({ innerWidth });
   };
 
   handleHover = () => {
@@ -50,10 +57,9 @@ class Template extends Component {
       name,
       techStacks,
       githubURL,
-      devProcess,
-      FontAwesomeIcon
+      devProcess
     } = this.props;
-    const { displayInfo } = this.state;
+    const { displayInfo, innerWidth } = this.state;
 
     return (
       <Fragment>
@@ -63,33 +69,20 @@ class Template extends Component {
             onMouseLeave={this.handleHover}
             style={{ padding: 0 }}
           >
-            <MockChrome
-              imgSrc={screenshot}
-              project={name}
+            {innerWidth < 992 ? (
+              <NoStyleLink to={`/dev/${name.toLowerCase()}`}>
+                <MockChrome imgSrc={screenshot} project={name} />
+              </NoStyleLink>
+            ) : (
+              <MockChrome imgSrc={screenshot} project={name} />
+            )}
+            <Info
+              emoji={emoji}
+              name={name}
+              techStacks={techStacks}
+              innerWidth={innerWidth}
               displayInfo={displayInfo}
             />
-            <Link to={`/dev/${name.toLowerCase()}`}>
-              <DescrWrapper displayInfo={displayInfo}>
-                {emoji ? (
-                  <ProjectName displayInfo={displayInfo}>
-                    {name.replace(/_/g, " ")}
-                    &nbsp;<Emoji>{emoji}</Emoji>
-                  </ProjectName>
-                ) : (
-                  <ProjectName displayInfo={displayInfo}>
-                    {name.replace(/_/g, " ")}
-                  </ProjectName>
-                )}
-                {FontAwesomeIcon ? (
-                  <TechStacks displayInfo={displayInfo}>
-                    Made with&nbsp;<FontAwesomeIcon icon={["fas", "heart"]} />&nbsp;and
-                  </TechStacks>
-                ) : null}
-                <TechStacks displayInfo={displayInfo}>
-                  {techStacks.map(ts => <Tech key={ts}>{ts}</Tech>)}
-                </TechStacks>
-              </DescrWrapper>
-            </Link>
           </Container>
         </Wrapper>
         <LinksWrapper>
@@ -111,8 +104,4 @@ class Template extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  FontAwesomeIcon: state.fontawesome.FontAwesomeIcon
-});
-
-export default connect(mapStateToProps, null)(Template);
+export default Template;

@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { withRouter } from "react-router";
+import { Route, Switch } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import Greeting from "./Greeting";
 import Layout from "./Layout";
@@ -22,7 +24,10 @@ class App extends Component {
     theme: PropTypes.objectOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
-    lazyloadFaModules: PropTypes.func.isRequired
+    lazyloadFaModules: PropTypes.func.isRequired,
+    location: PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ).isRequired
   };
 
   static defaultProps = {
@@ -38,7 +43,8 @@ class App extends Component {
   render() {
     const {
       app: { fontColor: color, isBlackBg, displayGreeting },
-      theme
+      theme,
+      location
     } = this.props;
 
     if (displayGreeting) {
@@ -55,16 +61,20 @@ class App extends Component {
     }
 
     return (
-      <Router>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            <ScrollToTop>
-              <Route exact path="/" component={MainContent} />
-              <Route path="/dev/:project" component={DevProcess} />
-            </ScrollToTop>
-          </Layout>
-        </ThemeProvider>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <TransitionGroup appear enter exit component={null}>
+            <CSSTransition classNames="route" timeout={800} key={location.key}>
+              <ScrollToTop>
+                <Switch location={location}>
+                  <Route exact path="/" component={MainContent} />
+                  <Route exact path="/dev/:project" component={DevProcess} />
+                </Switch>
+              </ScrollToTop>
+            </CSSTransition>
+          </TransitionGroup>
+        </Layout>
+      </ThemeProvider>
     );
   }
 }
@@ -77,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
   lazyloadFaModules: bindActionCreators(lazyloadFaModules, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

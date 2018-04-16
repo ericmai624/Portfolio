@@ -4,8 +4,7 @@ export const ChromeWrapper = styled.div`
   @media screen and (max-width: 992px) {
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 `;
 
@@ -37,8 +36,4 @@ export const Buttons = styled.span`
 
 export const Screenshot = styled.img`
   width: 100%;
-  transition: all 0.6s ease-in-out;
-
-  @media screen and (min-width: 992px) {
-  }
 `;
