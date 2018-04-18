@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SkillsContainer = styled.div.attrs({
-  className: "row justify-content-center align-items-center"
+  className: "skills row justify-content-center align-items-center"
 })`
   width: 100%;
   margin: 1em 0;
