@@ -19,6 +19,9 @@ export const Bracket = styled.div`
     padding: 0 1px;
     font-size: 80%;
   }
+  @media screen and (max-width: 375px) {
+    padding: 0 0.5px;
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -42,6 +45,9 @@ export const Content = styled.span`
   }
   @media screen and (max-width: 576px) {
     padding: 0 1px;
+  }
+  @media screen and (max-width: 375px) {
+    padding: 0 0.5px;
   }
 `;
 
