@@ -20,6 +20,7 @@ class MainContent extends Component {
       viewFactor: 1
     });
     window.sr.reveal(".section-title", { distance: "24px" });
+    window.sr.reveal("#skills");
     window.sr.reveal(".featured-project", { viewFactor: 0.6 });
     window.sr.reveal(".additional-projects", { viewFactor: 0.2 });
     window.sr.reveal(".featured-project-links", {
@@ -37,7 +38,7 @@ class MainContent extends Component {
         <TitleWrapper>
           <Title>MY SKILLS</Title>
         </TitleWrapper>
-        <Section fluid>
+        <Section fluid id="skills">
           <MySkills />
         </Section>
         <TitleWrapper>

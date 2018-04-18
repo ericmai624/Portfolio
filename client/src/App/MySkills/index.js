@@ -1,13 +1,19 @@
 import React, { Component, Fragment } from "react";
 import PropsTypes from "prop-types";
-import { SkillsContainer, Bracket, Text, Content, Comma } from "./Styled";
+import {
+  SkillsContainer,
+  Bracket,
+  ContentWrapper,
+  Content,
+  Comma
+} from "./Styled";
 
 class MySkills extends Component {
   static defaultProps = {
     skills: [
       {
         type: "languages",
-        content: ["JavaScript(ES6)", "HTML", "CSS/SASS", "Python", "SQL"]
+        content: ["JavaScript(ES6/ES7)", "HTML", "CSS/SASS", "Python", "SQL"]
       },
       { type: "frontend", content: ["React", "Angular", "jQuery", "Redux"] },
       {
@@ -62,10 +68,11 @@ class MySkills extends Component {
       <Fragment>
         {skills.map(skill => (
           <SkillsContainer key={skill.type}>
-            {/* <Text>{`${skill.type.toUpperCase()}:`}</Text> */}
             <Bracket>[</Bracket>
-            {skill.content.map(this.renderContent)}
-            <Bracket>]</Bracket>
+            <ContentWrapper>
+              {skill.content.map(this.renderContent)}
+            </ContentWrapper>
+            <Bracket style={{ textAlign: "right" }}>]</Bracket>
           </SkillsContainer>
         ))}
       </Fragment>
