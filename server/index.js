@@ -9,6 +9,8 @@ const port = process.env.PORT || 8080;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+app.use(middleware.helmet());
+app.use(middleware.compression());
 app.use(middleware.bodyParser.json());
 app.use(middleware.bodyParser.urlencoded({ extended: true }));
 app.use(middleware.morgan("common"));
